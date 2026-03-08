@@ -1,0 +1,3 @@
+```sh
+whois example.com
+```
