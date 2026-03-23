@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "7 - Shells & Payloads/1 - Shell Basics.md",
+                "file": "7 - Shells & Payloads/3 - Infiltrating Linux.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1 - Shell Basics"
+              "title": "3 - Infiltrating Linux"
             }
           }
         ]
@@ -210,8 +210,10 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "4562b081c7321d04",
+  "active": "82cd8b7f3b7e3dd0",
   "lastOpenFiles": [
+    "7 - Shells & Payloads/2 - Infiltrating Windows.md",
+    "7 - Shells & Payloads/3 - Infiltrating Linux.md",
     "7 - Shells & Payloads/1 - Shell Basics.md",
     "6 - File Transfers/1 - Windows File Transfer Methods.md",
     "7 - Shells & Payloads",
@@ -253,8 +255,6 @@
     "3 - Footprinting/6 - SMB.md",
     "4 - Information Gathering - Web",
     "3 - Footprinting/11 - SNMP.md",
-    "3 - Footprinting/10 - IMAP - POP3.md",
-    "3 - Footprinting/8 - DNS.md",
     "3 - Footprinting/images",
     "3 - Footprinting",
     "2 - Network Enumeration with Nmap"
