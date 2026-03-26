@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "857dc9c52ebeca84",
+        "id": "c8cd740a1881cea9",
         "type": "tabs",
         "children": [
           {
-            "id": "82cd8b7f3b7e3dd0",
+            "id": "55b6777ae2778fbb",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "7 - Shells & Payloads/3 - Infiltrating Linux.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "3 - Infiltrating Linux"
+              "title": "New tab"
             }
           }
         ]
@@ -210,10 +206,12 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "82cd8b7f3b7e3dd0",
+  "active": "55b6777ae2778fbb",
   "lastOpenFiles": [
-    "7 - Shells & Payloads/2 - Infiltrating Windows.md",
+    "7 - Shells & Payloads/5 - Skills Assessment Notes.md",
+    "7 - Shells & Payloads/4 - Web Shells.md",
     "7 - Shells & Payloads/3 - Infiltrating Linux.md",
+    "7 - Shells & Payloads/2 - Infiltrating Windows.md",
     "7 - Shells & Payloads/1 - Shell Basics.md",
     "6 - File Transfers/1 - Windows File Transfer Methods.md",
     "7 - Shells & Payloads",
@@ -252,9 +250,7 @@
     "4 - Information Gathering - Web/1 - WHOIS.md",
     "3 - Footprinting/Cheatsheet.md",
     "3 - Footprinting/9 - SMTP.md",
-    "3 - Footprinting/6 - SMB.md",
     "4 - Information Gathering - Web",
-    "3 - Footprinting/11 - SNMP.md",
     "3 - Footprinting/images",
     "3 - Footprinting",
     "2 - Network Enumeration with Nmap"
