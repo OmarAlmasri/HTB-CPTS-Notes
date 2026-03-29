@@ -11,10 +11,14 @@
             "id": "55b6777ae2778fbb",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "8 - Metasploit Framework/4 - Evasion.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "4 - Evasion"
             }
           }
         ]
@@ -208,6 +212,14 @@
   },
   "active": "55b6777ae2778fbb",
   "lastOpenFiles": [
+    "8 - Metasploit Framework/3 - Meterpreter.md",
+    "8 - Metasploit Framework/4 - Evasion.md",
+    "8 - Metasploit Framework/2 - Sessions.md",
+    "8 - Metasploit Framework/1 - MSF Components.md",
+    "8 - Metasploit Framework/Images/plugins.png",
+    "8 - Metasploit Framework/Images",
+    "8 - Metasploit Framework/images.md",
+    "8 - Metasploit Framework",
     "7 - Shells & Payloads/5 - Skills Assessment Notes.md",
     "7 - Shells & Payloads/4 - Web Shells.md",
     "7 - Shells & Payloads/3 - Infiltrating Linux.md",
@@ -235,7 +247,6 @@
     "5 - Vulnerability Assessment/images/OpenVAS Report-1.png",
     "5 - Vulnerability Assessment/images/vnstat1.png",
     "5 - Vulnerability Assessment/images/vnstat2.png",
-    "5 - Vulnerability Assessment/images/nessus_downloader.png",
     "5 - Vulnerability Assessment/images",
     "5 - Vulnerability Assessment/CVSS Scoring Cheatsheet.md",
     "5 - Vulnerability Assessment",
@@ -244,15 +255,8 @@
     "4 - Information Gathering - Web/5 - Search Engine Discovery.md",
     "4 - Information Gathering - Web/4 - Crawling.md",
     "4 - Information Gathering - Web/3 - Fingerprinting.md",
-    "4 - Information Gathering - Web/2 - DNS & Subdomains.md",
-    "3 - Footprinting/7 - NFS.md",
     "4 - Information Gathering - Web/images",
-    "4 - Information Gathering - Web/1 - WHOIS.md",
-    "3 - Footprinting/Cheatsheet.md",
-    "3 - Footprinting/9 - SMTP.md",
     "4 - Information Gathering - Web",
-    "3 - Footprinting/images",
-    "3 - Footprinting",
-    "2 - Network Enumeration with Nmap"
+    "3 - Footprinting/images"
   ]
 }
