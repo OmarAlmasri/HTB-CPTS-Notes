@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "c8cd740a1881cea9",
+        "id": "fc782322e077e8bb",
         "type": "tabs",
         "children": [
           {
-            "id": "55b6777ae2778fbb",
+            "id": "0ae1c2f03eb998ec",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "8 - Metasploit Framework/4 - Evasion.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "4 - Evasion"
+              "title": "New tab"
             }
           }
         ]
@@ -210,10 +206,12 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "55b6777ae2778fbb",
+  "active": "0ae1c2f03eb998ec",
   "lastOpenFiles": [
-    "8 - Metasploit Framework/3 - Meterpreter.md",
+    "9 - Password Attacks/1 - Password Cracking Techniques.md",
     "8 - Metasploit Framework/4 - Evasion.md",
+    "9 - Password Attacks",
+    "8 - Metasploit Framework/3 - Meterpreter.md",
     "8 - Metasploit Framework/2 - Sessions.md",
     "8 - Metasploit Framework/1 - MSF Components.md",
     "8 - Metasploit Framework/Images/plugins.png",
@@ -254,9 +252,7 @@
     "4 - Information Gathering - Web/6 - Automating Recon.md",
     "4 - Information Gathering - Web/5 - Search Engine Discovery.md",
     "4 - Information Gathering - Web/4 - Crawling.md",
-    "4 - Information Gathering - Web/3 - Fingerprinting.md",
     "4 - Information Gathering - Web/images",
-    "4 - Information Gathering - Web",
-    "3 - Footprinting/images"
+    "4 - Information Gathering - Web"
   ]
 }
