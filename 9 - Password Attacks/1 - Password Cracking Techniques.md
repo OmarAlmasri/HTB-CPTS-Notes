@@ -116,3 +116,290 @@ locate *2john*
 
 # Introduction to Hashcat
 
+```sh
+hashcat -a 0 -m 0 <hashes> [wordlist, rule, mask, ...]
+```
+
+- `-a`: Attack mode
+- `-m`: Hash type
+
+## Hash Type Identification
+
+```sh
+hashid -m  e3e3ec5831ad5e7288241960e5d4fdb8
+Analyzing 'e3e3ec5831ad5e7288241960e5d4fdb8'
+[+] MD2 
+[+] MD5 [Hashcat Mode: 0]
+[+] MD4 [Hashcat Mode: 900]
+[+] Double MD5 [Hashcat Mode: 2600]
+[+] LM [Hashcat Mode: 3000]
+[+] RIPEMD-128 
+[+] Haval-128 
+[+] Tiger-128 
+[+] Skein-256(128) 
+[+] Skein-512(128) 
+[+] Lotus Notes/Domino 5 [Hashcat Mode: 8600]
+[+] Skype [Hashcat Mode: 23]
+[+] Snefru-128 
+[+] NTLM [Hashcat Mode: 1000]
+[+] Domain Cached Credentials [Hashcat Mode: 1100]
+[+] Domain Cached Credentials 2 [Hashcat Mode: 2100]
+[+] DNSSEC(NSEC3) [Hashcat Mode: 8300]
+[+] RAdmin v2.x [Hashcat Mode: 9900]
+```
+
+## Rules
+
+Most of times a password list like `rockyou.txt` isn't enough to crack a password, so we have to apply rules which apply modification to the specified wordlist. Modifications using rules can be like the common or standard password modifications like appending numbers, replacing characters with their `leet` equivalent. To perform this attack we specify `-r <ruleset>` .
+
+```sh
+hashcat -a 0 -m 0 1b0556a75770563578569ae21392630c /usr/share/wordlists/rockyou.txt -r /usr/share/hashcat/rules/best64.rule
+```
+
+## Mass Attack
+
+[Mask attack](https://hashcat.net/wiki/doku.php?id=mask_attack) (`-a 3`) is a type of brute-force attack in which the keyspace is explicitly defined by the user. 
+A mask is defined by combining a sequence of symbols, each representing a built-in or custom character set. Hashcat includes several built-in character sets:
+
+|Symbol|Charset|
+|---|---|
+|?l|abcdefghijklmnopqrstuvwxyz|
+|?u|ABCDEFGHIJKLMNOPQRSTUVWXYZ|
+|?d|0123456789|
+|?h|0123456789abcdef|
+|?H|0123456789ABCDEF|
+|?s|«space»!"#$%&'()*+,-./:;<=>?@[]^_`{|
+|?a|?l?u?d?s|
+|?b|0x00 - 0xff|
+Custom charsets can be defined with the `-1`, `-2`, `-3`, and `-4` arguments, then referred to with `?1`, `?2`, `?3`, and `?4`.
+
+**Example Usage:**
+
+We want a password which starts with *uppercase letter*, continue with *four lowercase letters*, *a digit*, and then a *symbol*
+
+The resulting hashcat mask will be the following: `?u?l?l?l?l?d?s`.
+
+```sh
+hashcat -a 3 -m 0 1e293d6912d074c0fd15844d803400dd '?u?l?l?l?l?d?s'
+```
+
+# Writing Custom Wordlists and Rules
+
+## Hashcat Mutates
+
+| **Function** | **Description**                                  |
+| ------------ | ------------------------------------------------ |
+| `:`          | Do nothing                                       |
+| `l`          | Lowercase all letters                            |
+| `u`          | Uppercase all letters                            |
+| `c`          | Capitalize the first letter and lowercase others |
+| `sXY`        | Replace all instances of X with Y                |
+| `$!`         | Add the exclamation character at the end         |
+
+```ad-resources
+Full list can be reviewed from [rule_based_attack [hashcat wiki]](https://hashcat.net/wiki/doku.php?id=rule_based_attack) 
+```
+
+ **Custom Rule Example:**
+
+```sh
+Ripcord88x@htb[/htb]$ cat custom.rule
+
+:
+c
+so0
+c so0
+sa@
+c sa@
+c sa@ so0
+$!
+$! c
+$! so0
+$! sa@
+$! c so0
+$! c sa@
+$! so0 sa@
+$! c so0 sa@
+```
+
+### Hashcat Rules Reference Table
+
+| **Symbol** | **Function**                   |
+| ---------- | ------------------------------ |
+| `c`        | Capitalize first char          |
+| `u`        | Uppercase all                  |
+| `l`        | Lowercase all                  |
+| `t`        | Toggle all case                |
+| `r`        | Reverse the word               |
+| `$X`       | Append character X             |
+| `^X`       | Prepend character X            |
+| `sXY`      | Substitute X with Y            |
+| `D3`       | Delete character at position 3 |
+| `i3X`      | Insert X at position 3         |
+
+## Generating Wordlists using CeWL
+
+**Usage Example:**
+
+```sh
+cewl https://www.inlanefreight.com -d 4 -m 6 --lowercase -w inlane.wordlist
+```
+
+- `-d`: depth to spider
+- `-m`: minimum length of the word
+- `--lowercase`: the storage of the found words in lowercase
+- `-w`: where we want to store the results
+
+```ad-resources
+A tool `cupp` can be used for interactive password list generation based on OSINT data.
+
+**Usage Example:**
+`cupp -i`
+```
+
+# Cracking Protected Files
+
+## Hunting for Encrypted Files
+
+An example bash one-liner that can be used to find important file extensions in the file-system
+
+```sh
+for ext in $(echo ".xls .xls* .xltx .od* .doc .doc* .pdf .pot .pot* .pp*");do echo -e "\nFile extension: " $ext; find / -name *$ext 2>/dev/null | grep -v "lib\|fonts\|share\|core" ;done
+```
+
+## Hunting for SSH keys
+
+We can also hunt for accessible SSH keys
+
+```sh
+grep -rnE '^\-{5}BEGIN [A-Z0-9]+ PRIVATE KEY\-{5}$' /* 2>/dev/null
+```
+
+Some SSH keys are encrypted with a passphrase. One way to tell whether an SSH key is encrypted or not, is to try reading the key with `ssh-keygen`.
+
+```sh
+ssh-keygen -yf ~/.ssh/id_ed25519
+
+ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIIpNefJd834VkD5iq+22Zh59Gzmmtzo6rAffCx2UtaS6
+```
+
+Attempting to read a protected SSH key will prompt the user for a passphrase:
+
+```sh
+ssh-keygen -yf ~/.ssh/id_rsa 
+
+Enter passphrase for "/home/jsmith/.ssh/id_rsa":
+```
+
+We can crack encrypted SSH keys using `ssh2john` tool
+
+**Usage Example:**
+
+```sh
+ssh2john.py SSH.private > ssh.hash
+
+john --wordlist=rockyou.txt ssh.hash
+```
+
+## Cracking password-protected documents
+
+`office2john.py` has the ability to extract hashes from all protected common Office documents formats. Then, these hashes can be supplied to `john` for offline cracking
+
+```sh
+office2john.py Protected.docx > protected-docx.hash
+
+john --wordlist=rockyou.txt protected-docx.hash
+```
+
+Same thing can be done for protected PDF documents using `pdf2john.py`.
+
+```sh
+pdf2john.py PDF.pdf > pdf.hash
+john --wordlist=rockyou.txt pdf.hash
+```
+
+# Cracking Protected Archives
+
+We can get a full list of archive file types from **FileInfo** website, and we can extract them as text instead of writing them manually:
+
+```sh
+curl -s https://fileinfo.com/filetypes/compressed | html2text | awk '{print tolower($1)}' | grep "\." | tee -a compressed_ext.txt
+```
+
+## Cracking ZIP Files
+
+```sh
+zip2john.py file.zip > file.hash
+john --wordlist=rockyou.txt file.hash
+```
+
+## Cracking OpenSSL Encrypted GZIP Files
+
+We can't always immediately know if a file using an extension that doesn't natively support passwords is protected (e.g. `openssl` can be used to encrypt `GZIP` files). To determine the actual format of the file we can use `file` command.
+
+```sh
+file GZIP.gzip
+
+# Output:
+GZIP.gzip: openssl enc'd data with salted password
+```
+
+We can use the following one-liner to crack the encrypted file.
+*Note that this approach may produce several GZIP errors that can be safely ignored*
+
+```sh
+for i in $(cat rockyou.txt);do openssl enc -aes-256-cbc -d -in GZIP.gzip -k $i 2>/dev/null| tar xz;done
+```
+
+Once the `for` finishes we can check the current directory for newly extracted files.
+## Cracking BitLocker-encrypted drives
+
+We can use `bitlocker2john` to extract four hashes: the first two correspond to the BitLocker password, while the latter two represent the recovery key. Because the recovery key is very long and randomly generated, it is not a good idea to try to guess it. Therefore, we'll focus on the password using the first hash.
+
+**Example Usage:**
+
+```sh
+bitlocker2john -i Backup.vhd > backup.hashes 
+
+grep "bitlocker\$0" backup.hashes > backup.hash 
+
+cat backup.hash 
+
+$bitlocker$0$16$02b329c0453b9273f2fc1b927443b5fe$1048576$12$00b0a67f961dd80103000000$60$d59f37e70696f7eab6b8f95ae93bd53f3f7067d5e33c0394b3d8e2d1fdb885cb86c1b978f6cc12ed26de0889cd2196b0510bbcd2a8c89187ba8ec54f
+```
+
+After that we can try to crack the hash using `hashcat`
+
+```sh
+hashcat -a 0 -m 22100 '$bitlocker$0$16$02b329c0453b9273f2fc1b927443b5fe$1048576$12$00b0a67f961dd80103000000$60$d59f37e70696f7eab6b8f95ae93bd53f3f7067d5e33c0394b3d8e2d1fdb885cb86c1b978f6cc12ed26de0889cd2196b0510bbcd2a8c89187ba8ec54f' /usr/share/wordlists/rockyou.txt
+```
+
+#### Mounting BitLocker-encrypted drives in Windows
+
+Double-Click on the `.vhd` 
+#### Mounting BitLocker-encrypted drives in Linux (or macOS)
+
+```sh
+sudo apt-get install dislocker
+sudo mkdir -p /media/bitlocker 
+sudo mkdir -p /media/bitlockermount
+sudo losetup -f -P Backup.vhd 
+sudo losetup --all
+sudo dislocker /dev/loop0p2 -u "PASSWORD" -- /media/bitlocker 
+sudo mount -o loop /media/bitlocker/dislocker-file /media/bitlockermount
+```
+
+If everything was done correctly, we can browse the files:
+
+```sh
+cd /media/bitlockermount/
+ls -la
+```
+
+Once we have analyzed the files on the mounted drive, we can unmount it using the following commands:
+
+```sh
+sudo umount /media/bitlockermount
+sudo umount /media/bitlocker
+```
+

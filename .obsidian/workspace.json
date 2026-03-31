@@ -11,10 +11,14 @@
             "id": "0ae1c2f03eb998ec",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "9 - Password Attacks/2 - Remote Password Attacks.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "2 - Remote Password Attacks"
             }
           }
         ]
@@ -209,6 +213,7 @@
   "active": "0ae1c2f03eb998ec",
   "lastOpenFiles": [
     "9 - Password Attacks/1 - Password Cracking Techniques.md",
+    "9 - Password Attacks/2 - Remote Password Attacks.md",
     "8 - Metasploit Framework/4 - Evasion.md",
     "9 - Password Attacks",
     "8 - Metasploit Framework/3 - Meterpreter.md",
@@ -251,7 +256,6 @@
     "4 - Information Gathering - Web/7 - Skill Assessment.md",
     "4 - Information Gathering - Web/6 - Automating Recon.md",
     "4 - Information Gathering - Web/5 - Search Engine Discovery.md",
-    "4 - Information Gathering - Web/4 - Crawling.md",
     "4 - Information Gathering - Web/images",
     "4 - Information Gathering - Web"
   ]
