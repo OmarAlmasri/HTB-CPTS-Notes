@@ -11,10 +11,14 @@
             "id": "fa55718080e5ffb8",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "7 - Shells & Payloads/4 - Web Shells.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "4 - Web Shells"
             }
           }
         ]
@@ -208,6 +212,14 @@
   },
   "active": "fa55718080e5ffb8",
   "lastOpenFiles": [
+    "4 - Information Gathering - Web/2 - DNS & Subdomains.md",
+    "4 - Information Gathering - Web/1 - WHOIS.md",
+    "3 - Footprinting/Cheatsheet.md",
+    "3 - Footprinting/5 - FTP.md",
+    "3 - Footprinting/4 - Cloud Resources.md",
+    "3 - Footprinting/3 - Domain Information.md",
+    "3 - Footprinting/2 - Enumeration Methodology.md",
+    "3 - Footprinting/1 - Enumeration Principles.md",
     "9 - Password Attacks/3 - Extracting Passwords from Windows Systems.md",
     "6 - File Transfers/1 - Windows File Transfer Methods.md",
     "6 - File Transfers/2 - Linux File Transfer Methods.md",
@@ -241,17 +253,10 @@
     "6 - File Transfers/8 - Evading Detections.md",
     "6 - File Transfers/7 - Living off The Land.md",
     "6 - File Transfers/images/GTFOBins.png",
-    "6 - File Transfers/6 - Catching Files over HTTPS.md",
-    "6 - File Transfers/5 - Protected File Transfers.md",
-    "6 - File Transfers/4 - Miscellaneous File Transfer Methods.md",
     "6 - File Transfers/images",
     "6 - File Transfers",
-    "5 - Vulnerability Assessment/2 - OpenVAS.md",
-    "5 - Vulnerability Assessment/1 - Nessus.md",
     "5 - Vulnerability Assessment/images",
-    "5 - Vulnerability Assessment/CVSS Scoring Cheatsheet.md",
     "5 - Vulnerability Assessment",
-    "4 - Information Gathering - Web/7 - Skill Assessment.md",
     "4 - Information Gathering - Web/images"
   ]
 }
