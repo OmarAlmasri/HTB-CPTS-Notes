@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "623e9080f7972bca",
+        "id": "95c709ee79f16621",
         "type": "tabs",
         "children": [
           {
-            "id": "29f1c1397f8bdd45",
+            "id": "88b9b2af1c063012",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "9 - Password Attacks/6 - Windows Lateral Movement Techniques.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "6 - Windows Lateral Movement Techniques"
+              "title": "New tab"
             }
           }
         ]
@@ -94,7 +90,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 267.5
+    "width": 301.5
   },
   "right": {
     "id": "39f9239001c8b1c0",
@@ -110,7 +106,8 @@
             "state": {
               "type": "backlink",
               "state": {
-                "collapseAll": false,
+                "file": "9 - Password Attacks/6 - Windows Lateral Movement Techniques.md",
+                "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
                 "showSearch": false,
@@ -119,7 +116,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks"
+              "title": "Backlinks for 6 - Windows Lateral Movement Techniques"
             }
           },
           {
@@ -142,7 +139,9 @@
               "type": "tag",
               "state": {
                 "sortOrder": "frequency",
-                "useHierarchy": true
+                "useHierarchy": true,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-tags",
               "title": "Tags"
@@ -154,13 +153,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "7 - Shells & Payloads/1 - Shell Basics.md",
+                "file": "9 - Password Attacks/6 - Windows Lateral Movement Techniques.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 1 - Shell Basics"
+              "title": "Outline of 6 - Windows Lateral Movement Techniques"
             }
           },
           {
@@ -173,7 +172,8 @@
               "title": "Advanced Tables"
             }
           }
-        ]
+        ],
+        "currentTab": 3
       },
       {
         "id": "96e939afc6f22240",
@@ -210,22 +210,24 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "4562b081c7321d04",
+  "active": "88b9b2af1c063012",
   "lastOpenFiles": [
-    "9 - Password Attacks/images/Mimikatz - PSRemote PTT.png",
-    "9 - Password Attacks/1 - Password Cracking Techniques.md",
-    "9 - Password Attacks/3 - Extracting Passwords from Windows Systems.md",
     "9 - Password Attacks/6 - Windows Lateral Movement Techniques.md",
-    "9 - Password Attacks/images/DisableRestrictedAdmin-Registry.png",
-    "9 - Password Attacks/images/xfreerdp-error.png",
-    "Untitled.md",
     "9 - Password Attacks/5 - Extracting Passwords from the Network.md",
-    "9 - Password Attacks/images/PowerHuntShares.png",
-    "9 - Password Attacks/images/wireshark1.png",
+    "9 - Password Attacks/3 - Extracting Passwords from Windows Systems.md",
+    "9 - Password Attacks/1 - Password Cracking Techniques.md",
+    "9 - Password Attacks/images/pywhisker output.png",
+    "9 - Password Attacks/images/Shadow Credentials BloodHound.png",
+    "9 - Password Attacks/images/ntlmerelayx output.png",
+    "9 - Password Attacks/images/ESC8.png",
+    "9 - Password Attacks/images/krb5-user config.png",
+    "9 - Password Attacks/images/KeyTabExtract.png",
+    "9 - Password Attacks/images/keylist carlos keytab.png",
+    "9 - Password Attacks/images/realm list.png",
+    "9 - Password Attacks/images/Mimikatz - PSRemote PTT.png",
+    "9 - Password Attacks/images/DisableRestrictedAdmin-Registry.png",
+    "Untitled.md",
     "9 - Password Attacks/4 - Extracting Passwords from Linux Systems.md",
-    "9 - Password Attacks/images/FireFox Decrypt.png",
-    "9 - Password Attacks/images/vssadmin.png",
-    "9 - Password Attacks/images/nxc brute-force event-log.png",
     "7 - Shells & Payloads/4 - Web Shells.md",
     "4 - Information Gathering - Web/2 - DNS & Subdomains.md",
     "4 - Information Gathering - Web/1 - WHOIS.md",
@@ -238,9 +240,6 @@
     "6 - File Transfers/1 - Windows File Transfer Methods.md",
     "6 - File Transfers/2 - Linux File Transfer Methods.md",
     "6 - File Transfers/3 - Transferring Files with Code.md",
-    "9 - Password Attacks/images/Pypykatz DPAPI.png",
-    "9 - Password Attacks/images/WDIGEST.png",
-    "9 - Password Attacks/images/MSV.png",
     "9 - Password Attacks/2 - Remote Password Attacks.md",
     "9 - Password Attacks/images",
     "8 - Metasploit Framework/4 - Evasion.md",
