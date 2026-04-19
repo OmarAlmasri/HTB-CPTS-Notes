@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "95c709ee79f16621",
+        "id": "db23fecc1d4a3c99",
         "type": "tabs",
         "children": [
           {
-            "id": "88b9b2af1c063012",
+            "id": "0024934ff98b8ca0",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "10 - Attacking Common Services/1 - Introduction.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "1 - Introduction"
             }
           }
         ]
@@ -210,9 +214,11 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "88b9b2af1c063012",
+  "active": "0024934ff98b8ca0",
   "lastOpenFiles": [
     "9 - Password Attacks/6 - Windows Lateral Movement Techniques.md",
+    "10 - Attacking Common Services/1 - Introduction.md",
+    "10 - Attacking Common Services",
     "9 - Password Attacks/5 - Extracting Passwords from the Network.md",
     "9 - Password Attacks/3 - Extracting Passwords from Windows Systems.md",
     "9 - Password Attacks/1 - Password Cracking Techniques.md",
@@ -255,7 +261,6 @@
     "6 - File Transfers/images",
     "6 - File Transfers",
     "5 - Vulnerability Assessment/images",
-    "5 - Vulnerability Assessment",
-    "4 - Information Gathering - Web/images"
+    "5 - Vulnerability Assessment"
   ]
 }
