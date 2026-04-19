@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "db23fecc1d4a3c99",
+        "id": "c709a6a29d2dc32e",
         "type": "tabs",
         "children": [
           {
-            "id": "0024934ff98b8ca0",
+            "id": "5be91cef2b39fadd",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10 - Attacking Common Services/1 - Introduction.md",
+                "file": "10 - Attacking Common Services/2 - Protocol Specific Attacks.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "1 - Introduction"
+              "title": "2 - Protocol Specific Attacks"
             }
           }
         ]
@@ -157,13 +157,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "9 - Password Attacks/6 - Windows Lateral Movement Techniques.md",
+                "file": "10 - Attacking Common Services/2 - Protocol Specific Attacks.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 6 - Windows Lateral Movement Techniques"
+              "title": "Outline of 2 - Protocol Specific Attacks"
             }
           },
           {
@@ -177,7 +177,7 @@
             }
           }
         ],
-        "currentTab": 3
+        "currentTab": 4
       },
       {
         "id": "96e939afc6f22240",
@@ -214,10 +214,16 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "0024934ff98b8ca0",
+  "active": "5be91cef2b39fadd",
   "lastOpenFiles": [
-    "9 - Password Attacks/6 - Windows Lateral Movement Techniques.md",
+    "README.md",
+    "10 - Attacking Common Services/2 - Protocol Specific Attacks.md",
+    "10 - Attacking Common Services/Images",
+    "10 - Attacking Common Services/Images/Pasted image 20260419232044.png",
     "10 - Attacking Common Services/1 - Introduction.md",
+    "6 - File Transfers/2 - Linux File Transfer Methods.md",
+    "6 - File Transfers/1 - Windows File Transfer Methods.md",
+    "9 - Password Attacks/6 - Windows Lateral Movement Techniques.md",
     "10 - Attacking Common Services",
     "9 - Password Attacks/5 - Extracting Passwords from the Network.md",
     "9 - Password Attacks/3 - Extracting Passwords from Windows Systems.md",
@@ -231,7 +237,6 @@
     "9 - Password Attacks/images/keylist carlos keytab.png",
     "9 - Password Attacks/images/realm list.png",
     "9 - Password Attacks/images/Mimikatz - PSRemote PTT.png",
-    "9 - Password Attacks/images/DisableRestrictedAdmin-Registry.png",
     "Untitled.md",
     "9 - Password Attacks/4 - Extracting Passwords from Linux Systems.md",
     "7 - Shells & Payloads/4 - Web Shells.md",
@@ -243,8 +248,6 @@
     "3 - Footprinting/3 - Domain Information.md",
     "3 - Footprinting/2 - Enumeration Methodology.md",
     "3 - Footprinting/1 - Enumeration Principles.md",
-    "6 - File Transfers/1 - Windows File Transfer Methods.md",
-    "6 - File Transfers/2 - Linux File Transfer Methods.md",
     "6 - File Transfers/3 - Transferring Files with Code.md",
     "9 - Password Attacks/2 - Remote Password Attacks.md",
     "9 - Password Attacks/images",
@@ -254,13 +257,10 @@
     "8 - Metasploit Framework/2 - Sessions.md",
     "8 - Metasploit Framework/1 - MSF Components.md",
     "8 - Metasploit Framework/Images",
-    "8 - Metasploit Framework/images.md",
     "8 - Metasploit Framework",
-    "7 - Shells & Payloads/5 - Skills Assessment Notes.md",
     "7 - Shells & Payloads",
     "6 - File Transfers/images",
     "6 - File Transfers",
-    "5 - Vulnerability Assessment/images",
-    "5 - Vulnerability Assessment"
+    "5 - Vulnerability Assessment/images"
   ]
 }
