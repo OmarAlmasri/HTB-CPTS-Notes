@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10 - Attacking Common Services/2 - Protocol Specific Attacks.md",
+                "file": "10 - Attacking Common Services/3 - FTP.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "2 - Protocol Specific Attacks"
+              "title": "3 - FTP"
             }
           }
         ]
@@ -214,10 +214,12 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "5be91cef2b39fadd",
+  "active": "4562b081c7321d04",
   "lastOpenFiles": [
-    "README.md",
+    "10 - Attacking Common Services/Images/FTP Bounce Attack.png",
     "10 - Attacking Common Services/2 - Protocol Specific Attacks.md",
+    "10 - Attacking Common Services/3 - FTP.md",
+    "README.md",
     "10 - Attacking Common Services/Images",
     "10 - Attacking Common Services/Images/Pasted image 20260419232044.png",
     "10 - Attacking Common Services/1 - Introduction.md",
@@ -254,8 +256,6 @@
     "8 - Metasploit Framework/4 - Evasion.md",
     "9 - Password Attacks",
     "8 - Metasploit Framework/3 - Meterpreter.md",
-    "8 - Metasploit Framework/2 - Sessions.md",
-    "8 - Metasploit Framework/1 - MSF Components.md",
     "8 - Metasploit Framework/Images",
     "8 - Metasploit Framework",
     "7 - Shells & Payloads",

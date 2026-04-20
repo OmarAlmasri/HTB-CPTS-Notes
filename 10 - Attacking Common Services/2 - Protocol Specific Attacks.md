@@ -38,3 +38,33 @@ There are many different ways to pass information to a process
 |---|---|
 |`Local`|The local area is the system's environment in which the process occurred. Therefore, the results and outcomes of a task are either processed further by a process that includes changes to data sets or storage of the data.|
 |`Network`|The network area is mainly a matter of forwarding the results of a process to a remote interface. This can be an IP address and its services or even entire networks. The results of such processes can also influence the route under certain circumstances.|
+# Service Misconfigurations
+
+## Authentication
+
+```ad-tldr
+After grabbing the service banner, always check for default credentials or weak used credentials (something like `admin:Password`) or Anonymous login.
+
+---
+
+Check for **Misconfigured Access Rights**, a user thats role is to upload files could have the permession to read everything on the file server which can expose critical configuration files, credentials, and PII
+```
+## Unnecessary Defaults
+
+```ad-tldr
+Sometimes administrators keep the default configs/settings for the software after installation, this can open doors for vulnerabilities targeting misconfigurations in applications.
+```
+
+# Finding Sensitive Information
+
+Sensitive information may include, but is not limited to:
+
+- Usernames.
+- Email Addresses.
+- Passwords.
+- DNS records.
+- IP Addresses.
+- Source code.
+- Configuration files.
+- PII.
+
