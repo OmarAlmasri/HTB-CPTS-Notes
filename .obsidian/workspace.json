@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "10 - Attacking Common Services/3 - FTP.md",
+                "file": "10 - Attacking Common Services/4 - SMB.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "3 - FTP"
+              "title": "4 - SMB"
             }
           }
         ]
@@ -214,11 +214,12 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "4562b081c7321d04",
+  "active": "5be91cef2b39fadd",
   "lastOpenFiles": [
+    "10 - Attacking Common Services/3 - FTP.md",
+    "10 - Attacking Common Services/4 - SMB.md",
     "10 - Attacking Common Services/Images/FTP Bounce Attack.png",
     "10 - Attacking Common Services/2 - Protocol Specific Attacks.md",
-    "10 - Attacking Common Services/3 - FTP.md",
     "README.md",
     "10 - Attacking Common Services/Images",
     "10 - Attacking Common Services/Images/Pasted image 20260419232044.png",
@@ -238,7 +239,6 @@
     "9 - Password Attacks/images/KeyTabExtract.png",
     "9 - Password Attacks/images/keylist carlos keytab.png",
     "9 - Password Attacks/images/realm list.png",
-    "9 - Password Attacks/images/Mimikatz - PSRemote PTT.png",
     "Untitled.md",
     "9 - Password Attacks/4 - Extracting Passwords from Linux Systems.md",
     "7 - Shells & Payloads/4 - Web Shells.md",
