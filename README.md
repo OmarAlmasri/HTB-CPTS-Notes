@@ -54,17 +54,17 @@ Modules are organized by phase/domain as covered in the path. Progress will be t
 
 | #   | Module                                 | Status |
 | --- | -------------------------------------- | ------ |
-| 01  | Penetration Testing Process            | ⬜      |
-| 02  | Getting Started                        | ⬜      |
-| 03  | Network Enumeration with Nmap          | ⬜      |
-| 04  | Footprinting                           | ⬜      |
-| 05  | Information Gathering - Web Edition    | ⬜      |
-| 06  | Vulnerability Assessment               | ⬜      |
-| 07  | File Transfers                         | ⬜      |
-| 08  | Shells & Payloads                      | ⬜      |
-| 09  | Using the Metasploit Framework         | ⬜      |
-| 10  | Password Attacks                       | ⬜      |
-| 11  | Attacking Common Services              | ⬜      |
+| 01  | Penetration Testing Process            | ✅      |
+| 02  | Getting Started                        | ✅      |
+| 03  | Network Enumeration with Nmap          | ✅      |
+| 04  | Footprinting                           | ✅      |
+| 05  | Information Gathering - Web Edition    | ✅      |
+| 06  | Vulnerability Assessment               | ✅      |
+| 07  | File Transfers                         | ✅      |
+| 08  | Shells & Payloads                      | ✅      |
+| 09  | Using the Metasploit Framework         | ✅      |
+| 10  | Password Attacks                       | ✅      |
+| 11  | Attacking Common Services              | 🔄     |
 | 12  | Pivoting, Tunneling & Port Forwarding  | ⬜      |
 | 13  | Active Directory Enumeration & Attacks | ⬜      |
 | 14  | Using Web Proxies                      | ⬜      |

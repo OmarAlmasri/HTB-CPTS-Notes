@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "1e7be15c34eb960d",
+        "id": "43d67012af33790c",
         "type": "tabs",
         "children": [
           {
-            "id": "d943bcf5f9714ae1",
+            "id": "1ace2443c9596821",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "10 - Attacking Common Services/6 - RDP.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "6 - RDP"
+              "title": "New tab"
             }
           }
         ]
@@ -214,11 +210,20 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "4562b081c7321d04",
+  "active": "1ace2443c9596821",
   "lastOpenFiles": [
+    "README.md",
+    "10 - Attacking Common Services/8 - SMTP.md",
+    "10 - Attacking Common Services/Images/O365 Spray.png",
+    "10 - Attacking Common Services/Images/SMTP User Enum.png",
+    "10 - Attacking Common Services/Images/USER Command.png",
+    "10 - Attacking Common Services/7 - DNS.md",
+    "10 - Attacking Common Services/Images/RCPT TO Command.png",
+    "10 - Attacking Common Services/Images/EXPN Command.png",
+    "10 - Attacking Common Services/Images/VRFY Command.png",
+    "10 - Attacking Common Services/6 - RDP.md",
     "10 - Attacking Common Services/Images/RDP Session Hijacking.png",
     "10 - Attacking Common Services/5 - SQL Databases.md",
-    "10 - Attacking Common Services/6 - RDP.md",
     "10 - Attacking Common Services/Images/isremote_output.png",
     "10 - Attacking Common Services/Images/stealing hash with impacket.png",
     "10 - Attacking Common Services/Images/stealing hash with Responder.png",
@@ -226,11 +231,8 @@
     "9 - Password Attacks/5 - Extracting Passwords from the Network.md",
     "10 - Attacking Common Services/4 - SMB.md",
     "10 - Attacking Common Services/3 - FTP.md",
-    "10 - Attacking Common Services/Images/FTP Bounce Attack.png",
     "10 - Attacking Common Services/2 - Protocol Specific Attacks.md",
-    "README.md",
     "10 - Attacking Common Services/Images",
-    "10 - Attacking Common Services/Images/Pasted image 20260419232044.png",
     "10 - Attacking Common Services/1 - Introduction.md",
     "6 - File Transfers/2 - Linux File Transfer Methods.md",
     "6 - File Transfers/1 - Windows File Transfer Methods.md",
@@ -238,11 +240,6 @@
     "10 - Attacking Common Services",
     "9 - Password Attacks/3 - Extracting Passwords from Windows Systems.md",
     "9 - Password Attacks/1 - Password Cracking Techniques.md",
-    "9 - Password Attacks/images/pywhisker output.png",
-    "9 - Password Attacks/images/Shadow Credentials BloodHound.png",
-    "9 - Password Attacks/images/ntlmerelayx output.png",
-    "9 - Password Attacks/images/ESC8.png",
-    "9 - Password Attacks/images/krb5-user config.png",
     "Untitled.md",
     "9 - Password Attacks/4 - Extracting Passwords from Linux Systems.md",
     "7 - Shells & Payloads/4 - Web Shells.md",
@@ -252,8 +249,6 @@
     "3 - Footprinting/5 - FTP.md",
     "3 - Footprinting/4 - Cloud Resources.md",
     "3 - Footprinting/3 - Domain Information.md",
-    "3 - Footprinting/1 - Enumeration Principles.md",
-    "6 - File Transfers/3 - Transferring Files with Code.md",
     "9 - Password Attacks/images",
     "9 - Password Attacks",
     "8 - Metasploit Framework/Images",
