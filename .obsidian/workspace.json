@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "43d67012af33790c",
+        "id": "802126f075209556",
         "type": "tabs",
         "children": [
           {
-            "id": "1ace2443c9596821",
+            "id": "13985d62eb12da42",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "README.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "README"
             }
           }
         ]
@@ -210,10 +214,12 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "1ace2443c9596821",
+  "active": "13985d62eb12da42",
   "lastOpenFiles": [
-    "README.md",
+    "10 - Attacking Common Services/4 - SMB.md",
+    "10 - Attacking Common Services/5 - SQL Databases.md",
     "10 - Attacking Common Services/8 - SMTP.md",
+    "README.md",
     "10 - Attacking Common Services/Images/O365 Spray.png",
     "10 - Attacking Common Services/Images/SMTP User Enum.png",
     "10 - Attacking Common Services/Images/USER Command.png",
@@ -223,13 +229,11 @@
     "10 - Attacking Common Services/Images/VRFY Command.png",
     "10 - Attacking Common Services/6 - RDP.md",
     "10 - Attacking Common Services/Images/RDP Session Hijacking.png",
-    "10 - Attacking Common Services/5 - SQL Databases.md",
     "10 - Attacking Common Services/Images/isremote_output.png",
     "10 - Attacking Common Services/Images/stealing hash with impacket.png",
     "10 - Attacking Common Services/Images/stealing hash with Responder.png",
     "3 - Footprinting/2 - Enumeration Methodology.md",
     "9 - Password Attacks/5 - Extracting Passwords from the Network.md",
-    "10 - Attacking Common Services/4 - SMB.md",
     "10 - Attacking Common Services/3 - FTP.md",
     "10 - Attacking Common Services/2 - Protocol Specific Attacks.md",
     "10 - Attacking Common Services/Images",

