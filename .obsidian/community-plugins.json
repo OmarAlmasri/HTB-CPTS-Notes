@@ -11,5 +11,10 @@
   "obsidian-charts",
   "calendar",
   "code-styler",
-  "omnisearch"
+  "omnisearch",
+  "iconic",
+  "dataview",
+  "obsidian-tasks-plugin",
+  "templater-obsidian",
+  "obsidian-linter"
 ]
