@@ -54,3 +54,50 @@ This is called **SSH Tunnelling** over **SOCKS Proxy**.
 Another benefit, SOCKS proxies can pivot via creating a route to an external server from **NAT Networks**.
 
 `SOCKS4` doesn't provide authentication or UDP support. while `SOCKS5` does.
+
+![[Dynamic SSH Port Forwarding.png]]
+
+In the above image:
+- Attacker host starts the <span style="color:rgb(0, 176, 80)">SSH client</span>, and requests the <span style="color:rgb(0, 176, 80)">SSH server</span> , After the SSH server sends acknowledgement, the SSH client will start listening on `localhost:9050`.
+- Whatever data sent there will be <span style="color:rgb(0, 176, 80)">broadcasted</span> to the entire network.
+#### Enabling Dynamic Port Forwarding with SSH
+
+```sh
+ssh -D 9050 ubuntu@$IP
+```
+
+The `-D` requests the SSH Server to enable Dynamic Port Forwarding.
+After enabling this, we'll need a tool that can route any tool's packets over the port `9050`. We can use `proxychains`.
+
+To inform `proxychains` that we are using port `9050`, we have to edit the configuration file `/etc/proxychains.conf`.
+
+Now we can use tools such as `nmap` with `proxychains`
+#### Using Nmap with `Proxychains`
+
+```sh
+proxychains nmap -v -sn 172.16.5.1-200
+```
+
+```ad-important
+When we use **nmap** with **proxychains**, we must use **Full TCP Connect Scan**.
+**proxychains** cannot understand partial packets.
+
+---
+
+We also need to make sure that the **host is alive**. In fact, `host-alive` checks won't work on Windows targets because Windows Defender Firewall blocks ICMP requests by default. 
+```
+
+## Using Metasploit with Proxychains
+
+We can use
+
+```sh
+proxychains msfconsole
+```
+
+We can also use tools loke `xfreerdp`
+
+```sh
+proxychains xfreerdp /v:$IP /u:$user /p:$password
+```
+

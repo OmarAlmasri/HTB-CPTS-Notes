@@ -4,17 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "a0a9e9b83f9833e0",
+        "id": "31e51f8467192683",
         "type": "tabs",
         "children": [
           {
-            "id": "79dde5f96f3b2bd0",
+            "id": "87cef5e52a817911",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "11 - Pivoting, Tunneling, and Port Forwarding/2 - Choosing the Dig Site & Starting Our Tunnel.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "2 - Choosing the Dig Site & Starting Our Tunnel"
             }
           }
         ]
@@ -212,8 +216,10 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "79dde5f96f3b2bd0",
+  "active": "4562b081c7321d04",
   "lastOpenFiles": [
+    "11 - Pivoting, Tunneling, and Port Forwarding/Images/Dynamic SSH Port Forwarding.png",
+    "Untitled.md",
     "11 - Pivoting, Tunneling, and Port Forwarding/2 - Choosing the Dig Site & Starting Our Tunnel.md",
     "11 - Pivoting, Tunneling, and Port Forwarding/Images",
     "11 - Pivoting, Tunneling, and Port Forwarding/Images/SSH Local Port Forwarding.png",
@@ -248,7 +254,6 @@
     "10 - Attacking Common Services",
     "09 - Password Attacks/3 - Extracting Passwords from Windows Systems.md",
     "09 - Password Attacks/1 - Password Cracking Techniques.md",
-    "Untitled.md",
     "09 - Password Attacks/4 - Extracting Passwords from Linux Systems.md",
     "07 - Shells & Payloads/4 - Web Shells.md",
     "04 - Information Gathering - Web/2 - DNS & Subdomains.md",
