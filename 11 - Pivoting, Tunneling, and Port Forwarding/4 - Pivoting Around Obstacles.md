@@ -90,3 +90,21 @@ python client.py --server-ip <IPaddressofTargetWebServer> --server-port 8080 --n
 ---
 # Port Forwarding with Windows `Netsh`
 
+We can use `netsh` for:
+- `Finding routes`
+- `Viewing the firewall configuration`
+- `Adding proxies`
+- `Creating port forwarding rules`
+
+![[Netsh Port Forwarding.png]]
+#### Using Netsh.exe to Port Forward
+
+```powershell
+netsh.exe interface portproxy add v4tov4 listenport=8080 listenaddress=10.129.15.150 connectport=3389 connectaddress=172.16.5.25
+```
+#### Verifying Port Forward
+
+```powershell
+netsh.exe interface portproxy show v4tov4
+```
+
