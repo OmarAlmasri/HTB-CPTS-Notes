@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "bd559aeb59385499",
+        "id": "684652431359ebdb",
         "type": "tabs",
         "children": [
           {
-            "id": "737392e8f648e9b9",
+            "id": "b69ad6a57313c186",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "",
+                "query": "Ping Sweep",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -213,14 +213,18 @@
       "obsidian-kanban:Create new board": false
     }
   },
-  "active": "737392e8f648e9b9",
+  "active": "b69ad6a57313c186",
   "lastOpenFiles": [
-    "11 - Pivoting, Tunneling, and Port Forwarding/5 - Branching Out our Tunnels.md",
+    "11 - Pivoting, Tunneling, and Port Forwarding/7 - Detection & Prevention.md",
+    "11 - Pivoting, Tunneling, and Port Forwarding/2 - Choosing the Dig Site & Starting Our Tunnel.md",
+    "11 - Pivoting, Tunneling, and Port Forwarding/6 - Double Pivots.md",
+    "09 - Password Attacks/1 - Password Cracking Techniques.md",
     "11 - Pivoting, Tunneling, and Port Forwarding/4 - Pivoting Around Obstacles.md",
+    "11 - Pivoting, Tunneling, and Port Forwarding/3 - Playing Pong with Socat.md",
+    "11 - Pivoting, Tunneling, and Port Forwarding/5 - Branching Out our Tunnels.md",
+    "11 - Pivoting, Tunneling, and Port Forwarding/Images/SocksOverRDP.dll.png",
     "11 - Pivoting, Tunneling, and Port Forwarding/Images/Netsh Port Forwarding.png",
     "11 - Pivoting, Tunneling, and Port Forwarding/Images/RPivot.png",
-    "11 - Pivoting, Tunneling, and Port Forwarding/2 - Choosing the Dig Site & Starting Our Tunnel.md",
-    "11 - Pivoting, Tunneling, and Port Forwarding/3 - Playing Pong with Socat.md",
     "11 - Pivoting, Tunneling, and Port Forwarding/Images/Socat Bind Shell.png",
     "11 - Pivoting, Tunneling, and Port Forwarding/Images/Configure MSF SOCKS.png",
     "11 - Pivoting, Tunneling, and Port Forwarding/Images/Remote Port Forwarding Full Graph.png",
@@ -239,7 +243,6 @@
     "10 - Attacking Common Services/4 - SMB.md",
     "10 - Attacking Common Services/5 - SQL Databases.md",
     "10 - Attacking Common Services/Images/O365 Spray.png",
-    "10 - Attacking Common Services/Images/SMTP User Enum.png",
     "10 - Attacking Common Services/7 - DNS.md",
     "10 - Attacking Common Services/6 - RDP.md",
     "03 - Footprinting/2 - Enumeration Methodology.md",
@@ -252,10 +255,7 @@
     "09 - Password Attacks/6 - Windows Lateral Movement Techniques.md",
     "10 - Attacking Common Services",
     "09 - Password Attacks/3 - Extracting Passwords from Windows Systems.md",
-    "09 - Password Attacks/1 - Password Cracking Techniques.md",
     "09 - Password Attacks/4 - Extracting Passwords from Linux Systems.md",
-    "07 - Shells & Payloads/4 - Web Shells.md",
-    "04 - Information Gathering - Web/2 - DNS & Subdomains.md",
     "09 - Password Attacks/images",
     "09 - Password Attacks",
     "08 - Metasploit Framework/Images",
