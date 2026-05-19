@@ -158,13 +158,13 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "11 - Pivoting, Tunneling, and Port Forwarding/3 - Playing Pong with Socat.md",
+                "file": "12 - Active Directory Enumeration & Attacks/02 - Initial Enumeration.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 3 - Playing Pong with Socat"
+              "title": "Outline of 02 - Initial Enumeration"
             }
           },
           {
@@ -176,9 +176,19 @@
               "icon": "spreadsheet",
               "title": "Advanced Tables"
             }
+          },
+          {
+            "id": "f88e1c811cb6ef8f",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       },
       {
         "id": "96e939afc6f22240",
@@ -198,8 +208,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 262.5,
-    "collapsed": true
+    "width": 262.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -214,7 +223,8 @@
       "command-palette:Open command palette": false,
       "graph:Open graph view": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "obsidian-kanban:Create new board": false
+      "obsidian-kanban:Create new board": false,
+      "obsidian-git:Open Git source control": false
     }
   },
   "active": "dd4667ca6126e683",
