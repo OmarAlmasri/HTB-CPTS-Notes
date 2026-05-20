@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "f65c69bec0bb67ee",
+        "id": "be5ffbcc6dd37185",
         "type": "tabs",
         "children": [
           {
-            "id": "dd4667ca6126e683",
+            "id": "8b7e140980a02c7b",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "12 - Active Directory Enumeration & Attacks/02 - Initial Enumeration.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "02 - Initial Enumeration"
+              "title": "New tab"
             }
           }
         ]
@@ -208,7 +204,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 262.5
+    "width": 262.5,
+    "collapsed": true
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -227,10 +224,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "dd4667ca6126e683",
+  "active": "8b7e140980a02c7b",
   "lastOpenFiles": [
-    "12 - Active Directory Enumeration & Attacks/01 - Setting the Stage.md",
     "12 - Active Directory Enumeration & Attacks/02 - Initial Enumeration.md",
+    "12 - Active Directory Enumeration & Attacks/01 - Setting the Stage.md",
     "Parallel Project/Parallel Project Report.md",
     "Parallel Project/Grafana Stess - Pre-Req2.png",
     "Parallel Project.rar",

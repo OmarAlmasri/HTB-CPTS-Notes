@@ -41,3 +41,8 @@ Tools like [Trufflehog](https://github.com/trufflesecurity/truffleHog) and sit
 ## TTPs
 ### Identifying Hosts
 
+```ad-tldr
+We can use tools such as **tcpdump**, **wireshark**, and **fping** to identify hosts.
+```
+
+## Identifying Users
