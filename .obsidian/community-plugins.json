@@ -16,5 +16,6 @@
   "dataview",
   "obsidian-tasks-plugin",
   "templater-obsidian",
-  "obsidian-linter"
+  "obsidian-linter",
+  "obsidian-git"
 ]

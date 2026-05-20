@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "684652431359ebdb",
+        "id": "0e38f504d825c984",
         "type": "tabs",
         "children": [
           {
-            "id": "b69ad6a57313c186",
+            "id": "06378b5628f5aab1",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -49,7 +49,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Ping Sweep",
+                "query": "nxc",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -106,7 +106,6 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "9 - Password Attacks/6 - Windows Lateral Movement Techniques.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -116,7 +115,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 6 - Windows Lateral Movement Techniques"
+              "title": "Backlinks"
             }
           },
           {
@@ -125,12 +124,11 @@
             "state": {
               "type": "outgoing-link",
               "state": {
-                "file": "11 - Pivoting, Tunneling, and Port Forwarding/3 - Playing Pong with Socat.md",
                 "linksCollapsed": false,
                 "unlinkedCollapsed": true
               },
               "icon": "links-going-out",
-              "title": "Outgoing links from 3 - Playing Pong with Socat"
+              "title": "Outgoing links"
             }
           },
           {
@@ -154,13 +152,12 @@
             "state": {
               "type": "outline",
               "state": {
-                "file": "11 - Pivoting, Tunneling, and Port Forwarding/3 - Playing Pong with Socat.md",
                 "followCursor": false,
                 "showSearch": false,
                 "searchQuery": ""
               },
               "icon": "lucide-list",
-              "title": "Outline of 3 - Playing Pong with Socat"
+              "title": "Outline"
             }
           },
           {
@@ -172,9 +169,19 @@
               "icon": "spreadsheet",
               "title": "Advanced Tables"
             }
+          },
+          {
+            "id": "beaa5944921ffba9",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
         ],
-        "currentTab": 3
+        "currentTab": 5
       },
       {
         "id": "96e939afc6f22240",
@@ -194,8 +201,7 @@
       }
     ],
     "direction": "horizontal",
-    "width": 262.5,
-    "collapsed": true
+    "width": 262.5
   },
   "left-ribbon": {
     "hiddenItems": {
@@ -210,27 +216,33 @@
       "command-palette:Open command palette": false,
       "graph:Open graph view": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
-      "obsidian-kanban:Create new board": false
+      "obsidian-kanban:Create new board": false,
+      "obsidian-git:Open Git source control": false
     }
   },
-  "active": "b69ad6a57313c186",
+  "active": "3d57d65d984f70a6",
   "lastOpenFiles": [
+    "11 - Pivoting, Tunneling, and Port Forwarding/Images/SocksOverRDP.dll.png",
     "11 - Pivoting, Tunneling, and Port Forwarding/7 - Detection & Prevention.md",
-    "11 - Pivoting, Tunneling, and Port Forwarding/2 - Choosing the Dig Site & Starting Our Tunnel.md",
     "11 - Pivoting, Tunneling, and Port Forwarding/6 - Double Pivots.md",
-    "09 - Password Attacks/1 - Password Cracking Techniques.md",
+    "11 - Pivoting, Tunneling, and Port Forwarding/Images/Socat Bind Shell.png",
+    "11 - Pivoting, Tunneling, and Port Forwarding/Images/Remote Port Forwarding.png",
+    "11 - Pivoting, Tunneling, and Port Forwarding/Images/Remote Port Forwarding Full Graph.png",
+    "11 - Pivoting, Tunneling, and Port Forwarding/Images/RPivot.png",
+    "11 - Pivoting, Tunneling, and Port Forwarding/Images/Netsh Port Forwarding.png",
+    "11 - Pivoting, Tunneling, and Port Forwarding/Images/Dynamic SSH Port Forwarding.png",
+    "11 - Pivoting, Tunneling, and Port Forwarding/Images/Configure MSF SOCKS.png",
+    "11 - Pivoting, Tunneling, and Port Forwarding/5 - Branching Out our Tunnels.md",
     "11 - Pivoting, Tunneling, and Port Forwarding/4 - Pivoting Around Obstacles.md",
     "11 - Pivoting, Tunneling, and Port Forwarding/3 - Playing Pong with Socat.md",
-    "11 - Pivoting, Tunneling, and Port Forwarding/5 - Branching Out our Tunnels.md",
-    "11 - Pivoting, Tunneling, and Port Forwarding/Images/SocksOverRDP.dll.png",
-    "11 - Pivoting, Tunneling, and Port Forwarding/Images/Netsh Port Forwarding.png",
-    "11 - Pivoting, Tunneling, and Port Forwarding/Images/RPivot.png",
-    "11 - Pivoting, Tunneling, and Port Forwarding/Images/Socat Bind Shell.png",
-    "11 - Pivoting, Tunneling, and Port Forwarding/Images/Configure MSF SOCKS.png",
-    "11 - Pivoting, Tunneling, and Port Forwarding/Images/Remote Port Forwarding Full Graph.png",
-    "11 - Pivoting, Tunneling, and Port Forwarding/Images/Remote Port Forwarding.png",
-    "11 - Pivoting, Tunneling, and Port Forwarding/Images/Dynamic SSH Port Forwarding.png",
-    "Untitled.md",
+    "10 - Attacking Common Services/4 - SMB.md",
+    "10 - Attacking Common Services/5 - SQL Databases.md",
+    "08 - Metasploit Framework/1 - MSF Components.md",
+    "09 - Password Attacks/5 - Extracting Passwords from the Network.md",
+    "02 - Network Enumeration with Nmap/2 - Host Discovery.md",
+    "02 - Network Enumeration with Nmap/3 - Host and Port Scanning.md",
+    "11 - Pivoting, Tunneling, and Port Forwarding/2 - Choosing the Dig Site & Starting Our Tunnel.md",
+    "10 - Attacking Common Services/7 - DNS.md",
     "11 - Pivoting, Tunneling, and Port Forwarding/Images",
     "11 - Pivoting, Tunneling, and Port Forwarding/Images/SSH Local Port Forwarding.png",
     "Untitled.base",
@@ -240,13 +252,10 @@
     "06 - File Transfers/7 - Living off The Land.md",
     "06 - File Transfers/1 - Windows File Transfer Methods.md",
     "11 - Pivoting, Tunneling, and Port Forwarding",
-    "10 - Attacking Common Services/4 - SMB.md",
-    "10 - Attacking Common Services/5 - SQL Databases.md",
     "10 - Attacking Common Services/Images/O365 Spray.png",
-    "10 - Attacking Common Services/7 - DNS.md",
+    "10 - Attacking Common Services/Images/SMTP User Enum.png",
     "10 - Attacking Common Services/6 - RDP.md",
     "03 - Footprinting/2 - Enumeration Methodology.md",
-    "09 - Password Attacks/5 - Extracting Passwords from the Network.md",
     "10 - Attacking Common Services/3 - FTP.md",
     "10 - Attacking Common Services/2 - Protocol Specific Attacks.md",
     "10 - Attacking Common Services/Images",
@@ -254,8 +263,6 @@
     "06 - File Transfers/2 - Linux File Transfer Methods.md",
     "09 - Password Attacks/6 - Windows Lateral Movement Techniques.md",
     "10 - Attacking Common Services",
-    "09 - Password Attacks/3 - Extracting Passwords from Windows Systems.md",
-    "09 - Password Attacks/4 - Extracting Passwords from Linux Systems.md",
     "09 - Password Attacks/images",
     "09 - Password Attacks",
     "08 - Metasploit Framework/Images",
