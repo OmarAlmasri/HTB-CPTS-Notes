@@ -46,3 +46,14 @@ We can use tools such as **tcpdump**, **wireshark**, and **fping** to identify h
 ```
 
 ## Identifying Users
+
+```ad-tldr
+Kerbroasting as an example. Using `kerbrute` to check for valid usernames, and then spray for passwords.
+
+---
+
+**Command Example:**
+`kerbrute userenum -d INLANEFREIGHT.LOCAL --dc 172.16.5.5 jsmith.txt -o valid_ad_users`
+```
+
+
