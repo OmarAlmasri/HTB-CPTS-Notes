@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "db76fd9d981f8f64",
+        "id": "04684386e9080419",
         "type": "tabs",
         "children": [
           {
-            "id": "e1588369f6316cd5",
+            "id": "ce46204bc2d58ad1",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -176,16 +176,6 @@
               "icon": "spreadsheet",
               "title": "Advanced Tables"
             }
-          },
-          {
-            "id": "f88e1c811cb6ef8f",
-            "type": "leaf",
-            "state": {
-              "type": "git-view",
-              "state": {},
-              "icon": "git-pull-request",
-              "title": "Source Control"
-            }
           }
         ],
         "currentTab": 4
@@ -228,17 +218,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "e1588369f6316cd5",
+  "active": "d92cdf74ffd234ee",
   "lastOpenFiles": [
     "12 - Active Directory Enumeration & Attacks/07 - Cooking with Fire.md",
-    "12 - Active Directory Enumeration & Attacks/06 - Deeper Down the Rabbit Hole.md",
+    "12 - Active Directory Enumeration & Attacks/02 - Initial Enumeration.md",
     "12 - Active Directory Enumeration & Attacks/images/UAC Values.png",
+    "12 - Active Directory Enumeration & Attacks/images/querydominfo - password policy.png",
+    "12 - Active Directory Enumeration & Attacks/images",
+    "12 - Active Directory Enumeration & Attacks/06 - Deeper Down the Rabbit Hole.md",
     "12 - Active Directory Enumeration & Attacks/05 - Spray Responsibly.md",
     "12 - Active Directory Enumeration & Attacks/04 - Sighting In, Hunting for a User.md",
-    "12 - Active Directory Enumeration & Attacks/images",
-    "12 - Active Directory Enumeration & Attacks/images/querydominfo - password policy.png",
     "12 - Active Directory Enumeration & Attacks/03- Sniffing Out a Foothold.md",
-    "12 - Active Directory Enumeration & Attacks/02 - Initial Enumeration.md",
     "12 - Active Directory Enumeration & Attacks/01 - Setting the Stage.md",
     "Parallel Project/Parallel Project Report.md",
     "Parallel Project/Grafana Stess - Pre-Req2.png",
@@ -273,7 +263,6 @@
     "10 - Attacking Common Services/5 - SQL Databases.md",
     "10 - Attacking Common Services/7 - DNS.md",
     "10 - Attacking Common Services/6 - RDP.md",
-    "03 - Footprinting/2 - Enumeration Methodology.md",
     "10 - Attacking Common Services/Images",
     "10 - Attacking Common Services"
   ]
