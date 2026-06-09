@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "be5ffbcc6dd37185",
+        "id": "db76fd9d981f8f64",
         "type": "tabs",
         "children": [
           {
-            "id": "8b7e140980a02c7b",
+            "id": "e1588369f6316cd5",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "12 - Active Directory Enumeration & Attacks/02 - Initial Enumeration.md",
+                "file": "12 - Active Directory Enumeration & Attacks/07 - Cooking with Fire.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02 - Initial Enumeration"
+              "title": "07 - Cooking with Fire"
             }
           }
         ]
@@ -188,7 +188,7 @@
             }
           }
         ],
-        "currentTab": 5
+        "currentTab": 4
       },
       {
         "id": "96e939afc6f22240",
@@ -228,8 +228,16 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "8b7e140980a02c7b",
+  "active": "e1588369f6316cd5",
   "lastOpenFiles": [
+    "12 - Active Directory Enumeration & Attacks/07 - Cooking with Fire.md",
+    "12 - Active Directory Enumeration & Attacks/06 - Deeper Down the Rabbit Hole.md",
+    "12 - Active Directory Enumeration & Attacks/images/UAC Values.png",
+    "12 - Active Directory Enumeration & Attacks/05 - Spray Responsibly.md",
+    "12 - Active Directory Enumeration & Attacks/04 - Sighting In, Hunting for a User.md",
+    "12 - Active Directory Enumeration & Attacks/images",
+    "12 - Active Directory Enumeration & Attacks/images/querydominfo - password policy.png",
+    "12 - Active Directory Enumeration & Attacks/03- Sniffing Out a Foothold.md",
     "12 - Active Directory Enumeration & Attacks/02 - Initial Enumeration.md",
     "12 - Active Directory Enumeration & Attacks/01 - Setting the Stage.md",
     "Parallel Project/Parallel Project Report.md",
@@ -242,9 +250,7 @@
     "Parallel Project/Pasted image 20260518193707.png",
     "Parallel Project/Pasted image 20260518193501.png",
     "Parallel Project/Pasted image 20260518193330.png",
-    "Parallel Project/Pasted image 20260518192400.png",
     "Parallel Project Report.md",
-    "Parallel Project/Pasted image 20260518192206.png",
     "Parallel Project",
     "New folder",
     "12 - Active Directory Enumeration & Attacks",
@@ -268,13 +274,7 @@
     "10 - Attacking Common Services/7 - DNS.md",
     "10 - Attacking Common Services/6 - RDP.md",
     "03 - Footprinting/2 - Enumeration Methodology.md",
-    "09 - Password Attacks/5 - Extracting Passwords from the Network.md",
-    "10 - Attacking Common Services/3 - FTP.md",
-    "10 - Attacking Common Services/2 - Protocol Specific Attacks.md",
     "10 - Attacking Common Services/Images",
-    "10 - Attacking Common Services/1 - Introduction.md",
-    "06 - File Transfers/2 - Linux File Transfer Methods.md",
-    "10 - Attacking Common Services",
-    "09 - Password Attacks/images"
+    "10 - Attacking Common Services"
   ]
 }
