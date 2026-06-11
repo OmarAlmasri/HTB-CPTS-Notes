@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "12 - Active Directory Enumeration & Attacks/07 - Cooking with Fire.md",
+                "file": "11 - Pivoting, Tunneling, and Port Forwarding/2 - Choosing the Dig Site & Starting Our Tunnel.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "07 - Cooking with Fire"
+              "title": "2 - Choosing the Dig Site & Starting Our Tunnel"
             }
           }
         ]
@@ -74,7 +74,8 @@
               "title": "Bookmarks"
             }
           }
-        ]
+        ],
+        "currentTab": 1
       },
       {
         "id": "56b3c0a363b1bfed",
@@ -218,8 +219,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d92cdf74ffd234ee",
+  "active": "ce46204bc2d58ad1",
   "lastOpenFiles": [
+    "12 - Active Directory Enumeration & Attacks/08 - An ACE in the Hole.md",
+    "12 - Active Directory Enumeration & Attacks/images/ACE Attacks.png",
     "12 - Active Directory Enumeration & Attacks/07 - Cooking with Fire.md",
     "12 - Active Directory Enumeration & Attacks/02 - Initial Enumeration.md",
     "12 - Active Directory Enumeration & Attacks/images/UAC Values.png",
@@ -239,7 +242,6 @@
     "Parallel Project/Pasted image 20260518194105.png",
     "Parallel Project/Pasted image 20260518193707.png",
     "Parallel Project/Pasted image 20260518193501.png",
-    "Parallel Project/Pasted image 20260518193330.png",
     "Parallel Project Report.md",
     "Parallel Project",
     "New folder",
@@ -262,7 +264,6 @@
     "10 - Attacking Common Services/4 - SMB.md",
     "10 - Attacking Common Services/5 - SQL Databases.md",
     "10 - Attacking Common Services/7 - DNS.md",
-    "10 - Attacking Common Services/6 - RDP.md",
     "10 - Attacking Common Services/Images",
     "10 - Attacking Common Services"
   ]

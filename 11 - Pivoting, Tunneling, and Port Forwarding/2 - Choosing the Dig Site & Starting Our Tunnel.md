@@ -187,7 +187,7 @@ for /L %i in (1 1 254) do ping 172.16.5.%i -n 1 -w 100 | find "Reply"
 ```
 
 ```ad-tip
-It is advised to do the ping sweep at least twice because the results may not be accurate from the first time.
+It is advised to do the 0ping sweep at least twice because the results may not be accurate from the first time.
 ```
 
 In some cases, firewalls could be blocking ICMP so in that case we would need to perform a TCP scan on the targeted network using tools like `nmap`
