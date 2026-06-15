@@ -26,3 +26,48 @@ Each ACE is made up of the following `four` components:
 
 ![[ACE Attacks.png]]
 
+# ACL Enumeration
+## Enumerating ACLs with PowerView
+#### Using Find-InterestingDomainAcl
+
+```powershell
+Find-InterestingDomainAcl
+```
+
+The results of this query will be too large to check. We can specify a target instead
+
+```powershell
+$sid = Convert-NameToSid wley
+```
+#### Using Get-DomainObjectACL
+
+```powershell
+Get-DomainObjectACL -Identity * | ? {$_.SecurityIdentifier -eq $sid}
+```
+#### Performing a Reverse Search & Mapping to a GUID Value
+
+```powershell
+$guid= "00299570-246d-11d0-a768-00aa006e0529"
+
+Get-ADObject -SearchBase "CN=Extended-Rights,$((Get-ADRootDSE).ConfigurationNamingContext)" -Filter {ObjectClass -like 'ControlAccessRight'} -Properties * |Select Name,DisplayName,DistinguishedName,rightsGuid| ?{$_.rightsGuid -eq $guid} | fl
+```
+#### Using the -ResolveGUIDs Flag
+
+```powershell
+Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $sid}
+```
+#### Investigating the Information Technology Group
+
+```powershell
+$itgroupsid = Convert-NameToSid "Information Technology"
+
+Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $itgroupsid} -Verbose
+```
+#### Looking for Interesting Access
+
+```powershell
+$adunnsid = Convert-NameToSid adunn
+
+Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $adunnsid} -Verbose
+```
+
