@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "e003758555d08dba",
+        "id": "509a215fbdba4385",
         "type": "tabs",
         "children": [
           {
-            "id": "0bf71b83d4c40c62",
+            "id": "518765e2ade0c04d",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "12 - Active Directory Enumeration & Attacks/08 - An ACE in the Hole.md",
+                "file": "12 - Active Directory Enumeration & Attacks/09 - Stacking the Deck.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "08 - An ACE in the Hole"
+              "title": "09 - Stacking the Deck"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "Ping Sweep",
+                "query": "mssql",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -218,11 +218,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4562b081c7321d04",
+  "active": "518765e2ade0c04d",
   "lastOpenFiles": [
+    "10 - Attacking Common Services/1 - Introduction.md",
+    "12 - Active Directory Enumeration & Attacks/09 - Stacking the Deck.md",
+    "12 - Active Directory Enumeration & Attacks/08 - An ACE in the Hole.md",
     "12 - Active Directory Enumeration & Attacks/images/Reversible Encryption.png",
     "11 - Pivoting, Tunneling, and Port Forwarding/2 - Choosing the Dig Site & Starting Our Tunnel.md",
-    "12 - Active Directory Enumeration & Attacks/08 - An ACE in the Hole.md",
     "12 - Active Directory Enumeration & Attacks/images/ACE Attacks.png",
     "12 - Active Directory Enumeration & Attacks/07 - Cooking with Fire.md",
     "12 - Active Directory Enumeration & Attacks/02 - Initial Enumeration.md",
@@ -242,7 +244,6 @@
     "Parallel Project/Pasted image 20260518194404.png",
     "Parallel Project/Pasted image 20260518194105.png",
     "Parallel Project/Pasted image 20260518193707.png",
-    "Parallel Project/Pasted image 20260518193501.png",
     "Parallel Project Report.md",
     "Parallel Project",
     "New folder",
@@ -263,7 +264,6 @@
     "11 - Pivoting, Tunneling, and Port Forwarding",
     "10 - Attacking Common Services/4 - SMB.md",
     "10 - Attacking Common Services/5 - SQL Databases.md",
-    "10 - Attacking Common Services/7 - DNS.md",
     "10 - Attacking Common Services/Images",
     "10 - Attacking Common Services"
   ]
