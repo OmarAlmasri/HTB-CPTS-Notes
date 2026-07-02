@@ -218,8 +218,9 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "518765e2ade0c04d",
+  "active": "4562b081c7321d04",
   "lastOpenFiles": [
+    "12 - Active Directory Enumeration & Attacks/images/PetitPotam exploit.png",
     "10 - Attacking Common Services/1 - Introduction.md",
     "12 - Active Directory Enumeration & Attacks/09 - Stacking the Deck.md",
     "12 - Active Directory Enumeration & Attacks/08 - An ACE in the Hole.md",
@@ -263,7 +264,6 @@
     "06 - File Transfers/1 - Windows File Transfer Methods.md",
     "11 - Pivoting, Tunneling, and Port Forwarding",
     "10 - Attacking Common Services/4 - SMB.md",
-    "10 - Attacking Common Services/5 - SQL Databases.md",
     "10 - Attacking Common Services/Images",
     "10 - Attacking Common Services"
   ]
