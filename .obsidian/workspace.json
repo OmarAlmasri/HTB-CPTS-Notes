@@ -4,21 +4,21 @@
     "type": "split",
     "children": [
       {
-        "id": "509a215fbdba4385",
+        "id": "575ca94333c48d21",
         "type": "tabs",
         "children": [
           {
-            "id": "518765e2ade0c04d",
+            "id": "4f6a7cd6c0ce775a",
             "type": "leaf",
             "state": {
               "type": "markdown",
               "state": {
-                "file": "12 - Active Directory Enumeration & Attacks/09 - Stacking the Deck.md",
+                "file": "12 - Active Directory Enumeration & Attacks/10 - Why So Trusting.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "09 - Stacking the Deck"
+              "title": "10 - Why So Trusting"
             }
           }
         ]
@@ -53,7 +53,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "mssql",
+                "query": "Ping Sweep",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -176,9 +176,19 @@
               "icon": "spreadsheet",
               "title": "Advanced Tables"
             }
+          },
+          {
+            "id": "ac3d87f7093ea3f7",
+            "type": "leaf",
+            "state": {
+              "type": "git-view",
+              "state": {},
+              "icon": "git-pull-request",
+              "title": "Source Control"
+            }
           }
         ],
-        "currentTab": 4
+        "currentTab": 5
       },
       {
         "id": "96e939afc6f22240",
@@ -218,12 +228,12 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "4562b081c7321d04",
+  "active": "4f6a7cd6c0ce775a",
   "lastOpenFiles": [
-    "12 - Active Directory Enumeration & Attacks/images/PetitPotam exploit.png",
-    "10 - Attacking Common Services/1 - Introduction.md",
     "12 - Active Directory Enumeration & Attacks/09 - Stacking the Deck.md",
+    "12 - Active Directory Enumeration & Attacks/10 - Why So Trusting.md",
     "12 - Active Directory Enumeration & Attacks/08 - An ACE in the Hole.md",
+    "12 - Active Directory Enumeration & Attacks/images/PetitPotam exploit.png",
     "12 - Active Directory Enumeration & Attacks/images/Reversible Encryption.png",
     "11 - Pivoting, Tunneling, and Port Forwarding/2 - Choosing the Dig Site & Starting Our Tunnel.md",
     "12 - Active Directory Enumeration & Attacks/images/ACE Attacks.png",
@@ -244,7 +254,6 @@
     "Parallel Project/Pasted image 20260518195213.png",
     "Parallel Project/Pasted image 20260518194404.png",
     "Parallel Project/Pasted image 20260518194105.png",
-    "Parallel Project/Pasted image 20260518193707.png",
     "Parallel Project Report.md",
     "Parallel Project",
     "New folder",
@@ -264,6 +273,7 @@
     "06 - File Transfers/1 - Windows File Transfer Methods.md",
     "11 - Pivoting, Tunneling, and Port Forwarding",
     "10 - Attacking Common Services/4 - SMB.md",
+    "10 - Attacking Common Services/5 - SQL Databases.md",
     "10 - Attacking Common Services/Images",
     "10 - Attacking Common Services"
   ]
