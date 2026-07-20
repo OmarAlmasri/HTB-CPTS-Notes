@@ -65,8 +65,8 @@ Modules are organized by phase/domain as covered in the path. Progress will be t
 | 09  | Using the Metasploit Framework         | ✅      |
 | 10  | Password Attacks                       | ✅      |
 | 11  | Attacking Common Services              | ✅      |
-| 12  | Pivoting, Tunneling & Port Forwarding  | 🔄     |
-| 13  | Active Directory Enumeration & Attacks | ⬜      |
+| 12  | Pivoting, Tunneling & Port Forwarding  | ✅      |
+| 13  | Active Directory Enumeration & Attacks | 🔄     |
 | 14  | Using Web Proxies                      | ⬜      |
 | 15  | Attacking Web Applications with Ffuf   | ⬜      |
 | 16  | Login Brute Forcing                    | ⬜      |
