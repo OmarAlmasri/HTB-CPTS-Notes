@@ -67,9 +67,9 @@ Modules are organized by phase/domain as covered in the path. Progress will be t
 | 11  | Attacking Common Services              | ✅      |
 | 12  | Pivoting, Tunneling & Port Forwarding  | ✅      |
 | 13  | Active Directory Enumeration & Attacks | ✅      |
-| 14  | Using Web Proxies                      | 🔄     |
-| 15  | Attacking Web Applications with Ffuf   | ⬜      |
-| 16  | Login Brute Forcing                    | ⬜      |
+| 14  | Using Web Proxies                      | ✅      |
+| 15  | Attacking Web Applications with Ffuf   | ✅      |
+| 16  | Login Brute Forcing                    | 🔄     |
 | 17  | SQL Injection Fundamentals             | ⬜      |
 | 18  | SQLMap Essentials                      | ⬜      |
 | 19  | Cross-Site Scripting (XSS)             | ⬜      |

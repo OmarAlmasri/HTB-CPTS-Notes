@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "157a349532b3326c",
+        "id": "01f7d323f0a88939",
         "type": "tabs",
         "children": [
           {
-            "id": "d6c8d0b8dd49c861",
+            "id": "d32d62f422724da0",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "README.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "README"
+              "title": "New tab"
             }
           }
         ]
@@ -228,9 +224,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d6c8d0b8dd49c861",
+  "active": "d32d62f422724da0",
   "lastOpenFiles": [
+    "README.md",
+    "14 - Attacking Web Applications with Ffuf/03 - Parameter Fuzzing.md",
+    "14 - Attacking Web Applications with Ffuf/02 - Domain Fuzzing.md",
+    "14 - Attacking Web Applications with Ffuf/01 - Basic Fuzzing.md",
+    "14 - Attacking Web Applications with Ffuf",
     "12 - Active Directory Enumeration & Attacks/13 - Skill Assessment Notes.md",
+    "13 - Using Web Proxies",
     "10 - Attacking Common Services/5 - SQL Databases.md",
     "12 - Active Directory Enumeration & Attacks/03- Sniffing Out a Foothold.md",
     "12 - Active Directory Enumeration & Attacks/02 - Initial Enumeration.md",
@@ -249,32 +251,26 @@
     "12 - Active Directory Enumeration & Attacks/12 - Defensive Considerations.md",
     "12 - Active Directory Enumeration & Attacks/10 - Why So Trusting.md",
     "12 - Active Directory Enumeration & Attacks/images/SID History Cross Forest.png",
-    "README.md",
     "10 - Attacking Common Services/8 - SMTP.md",
     "03 - Footprinting/10 - IMAP - POP3.md",
     "03 - Footprinting/Cheatsheet.md",
     "12 - Active Directory Enumeration & Attacks/09 - Stacking the Deck.md",
     "12 - Active Directory Enumeration & Attacks/images/PetitPotam exploit.png",
     "12 - Active Directory Enumeration & Attacks/images/Reversible Encryption.png",
-    "11 - Pivoting, Tunneling, and Port Forwarding/2 - Choosing the Dig Site & Starting Our Tunnel.md",
     "12 - Active Directory Enumeration & Attacks/images/ACE Attacks.png",
     "12 - Active Directory Enumeration & Attacks/images/UAC Values.png",
     "12 - Active Directory Enumeration & Attacks/images/querydominfo - password policy.png",
     "12 - Active Directory Enumeration & Attacks/images",
-    "Parallel Project/Parallel Project Report.md",
     "Parallel Project/Grafana Stess - Pre-Req2.png",
     "Parallel Project.rar",
     "Parallel Project/Pasted image 20260518195415.png",
     "Parallel Project/Pasted image 20260518195213.png",
     "Parallel Project/Pasted image 20260518194404.png",
-    "Parallel Project Report.md",
     "Parallel Project",
     "New folder",
     "12 - Active Directory Enumeration & Attacks",
     "11 - Pivoting, Tunneling, and Port Forwarding/Images",
     "Untitled.base",
-    "11 - Pivoting, Tunneling, and Port Forwarding",
-    "10 - Attacking Common Services/Images",
-    "10 - Attacking Common Services"
+    "11 - Pivoting, Tunneling, and Port Forwarding"
   ]
 }
