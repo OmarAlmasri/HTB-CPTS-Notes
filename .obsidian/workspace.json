@@ -11,10 +11,14 @@
             "id": "d32d62f422724da0",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "15 - Login Brute Forcing/01 - Hydra.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "01 - Hydra"
             }
           }
         ]
@@ -37,7 +41,9 @@
               "type": "file-explorer",
               "state": {
                 "sortOrder": "alphabetical",
-                "autoReveal": false
+                "autoReveal": false,
+                "showSearch": false,
+                "searchQuery": ""
               },
               "icon": "lucide-folder-closed",
               "title": "Files"
@@ -226,6 +232,8 @@
   },
   "active": "d32d62f422724da0",
   "lastOpenFiles": [
+    "15 - Login Brute Forcing/01 - Hydra.md",
+    "15 - Login Brute Forcing",
     "README.md",
     "14 - Attacking Web Applications with Ffuf/03 - Parameter Fuzzing.md",
     "14 - Attacking Web Applications with Ffuf/02 - Domain Fuzzing.md",
@@ -254,7 +262,6 @@
     "10 - Attacking Common Services/8 - SMTP.md",
     "03 - Footprinting/10 - IMAP - POP3.md",
     "03 - Footprinting/Cheatsheet.md",
-    "12 - Active Directory Enumeration & Attacks/09 - Stacking the Deck.md",
     "12 - Active Directory Enumeration & Attacks/images/PetitPotam exploit.png",
     "12 - Active Directory Enumeration & Attacks/images/Reversible Encryption.png",
     "12 - Active Directory Enumeration & Attacks/images/ACE Attacks.png",
@@ -270,7 +277,6 @@
     "New folder",
     "12 - Active Directory Enumeration & Attacks",
     "11 - Pivoting, Tunneling, and Port Forwarding/Images",
-    "Untitled.base",
-    "11 - Pivoting, Tunneling, and Port Forwarding"
+    "Untitled.base"
   ]
 }
