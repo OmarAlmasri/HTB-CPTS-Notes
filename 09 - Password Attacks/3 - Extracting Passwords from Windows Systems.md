@@ -136,13 +136,13 @@ hashcat -m 2100 '$DCC2$10240#administrator#23d97555681813db79b2ade4b4a6ff25' /us
 
 We previously saw **machines and user keys** for **DPAPI** also dumped from `hklm\security`, **DPAPI** is an API for windows used to encrypt and decrypt data blobs on a per-user basis.
 
-|Applications|Use of DPAPI|
-|---|---|
-|`Internet Explorer`|Password form auto-completion data (username and password for saved sites).|
-|`Google Chrome`|Password form auto-completion data (username and password for saved sites).|
-|`Outlook`|Passwords for email accounts.|
-|`Remote Desktop Connection`|Saved credentials for connections to remote machines.|
-|`Credential Manager`|Saved credentials for accessing shared resources, joining Wireless networks, VPNs and more.|
+| Applications                | Use of DPAPI                                                                                |
+| --------------------------- | ------------------------------------------------------------------------------------------- |
+| `Internet Explorer`         | Password form auto-completion data (username and password for saved sites).                 |
+| `Google Chrome`             | Password form auto-completion data (username and password for saved sites).                 |
+| `Outlook`                   | Passwords for email accounts.                                                               |
+| `Remote Desktop Connection` | Saved credentials for connections to remote machines.                                       |
+| `Credential Manager`        | Saved credentials for accessing shared resources, joining Wireless networks, VPNs and more. |
 
 ```ad-note
 DPAPI encrypted credentials can be decrypted manually with tools like Impacket's [dpapi](https://github.com/fortra/impacket/blob/master/examples/dpapi.py), [mimikatz](https://github.com/gentilkiwi/mimikatz), or remotely with [DonPAPI](https://github.com/login-securite/DonPAPI).

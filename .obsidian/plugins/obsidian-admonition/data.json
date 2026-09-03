@@ -2,10 +2,10 @@
   "userAdmonitions": {
     "resources": {
       "type": "resources",
-      "color": "8, 201, 21",
+      "color": "rgb(8, 201, 21)",
       "icon": {
         "name": "bookmark",
-        "type": "font-awesome"
+        "type": "fas"
       },
       "command": false,
       "title": "Resources",
@@ -16,23 +16,24 @@
   },
   "syntaxHighlight": false,
   "copyButton": false,
-  "version": "10.3.2",
+  "version": "12.0.5",
   "autoCollapse": false,
   "defaultCollapseType": "open",
   "injectColor": true,
   "parseTitles": true,
   "dropShadow": true,
   "hideEmpty": false,
+  "icons": [
+    "fas"
+  ],
+  "rpgDownloadedOnce": false,
+  "useSnippet": false,
+  "snippetPath": "custom-admonitions.fc4107",
   "open": {
     "admonitions": true,
     "icons": true,
     "other": true,
     "advanced": false
   },
-  "icons": [],
-  "useFontAwesome": true,
-  "rpgDownloadedOnce": false,
-  "msDocConverted": false,
-  "useSnippet": false,
-  "snippetPath": "custom-admonitions.fc4107"
+  "useFontAwesome": false
 }

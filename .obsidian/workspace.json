@@ -20,8 +20,23 @@
               "icon": "lucide-file",
               "title": "01 - Hydra"
             }
+          },
+          {
+            "id": "2227eec5032b5c98",
+            "type": "leaf",
+            "state": {
+              "type": "markdown",
+              "state": {
+                "file": "15 - Login Brute Forcing/01 - Hydra.md",
+                "mode": "source",
+                "source": false
+              },
+              "icon": "lucide-file",
+              "title": "01 - Hydra"
+            }
           }
-        ]
+        ],
+        "currentTab": 1
       }
     ],
     "direction": "vertical"
@@ -55,7 +70,7 @@
             "state": {
               "type": "search",
               "state": {
-                "query": "mssql",
+                "query": "username-ana",
                 "matchingCase": false,
                 "explainSearch": false,
                 "collapseAll": false,
@@ -230,9 +245,13 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d32d62f422724da0",
+  "active": "2227eec5032b5c98",
   "lastOpenFiles": [
+    "09 - Password Attacks/3 - Extracting Passwords from Windows Systems.md",
+    "15 - Login Brute Forcing/02 - Medusa.md",
     "15 - Login Brute Forcing/01 - Hydra.md",
+    "15 - Login Brute Forcing/03 - Custom Wordlists.md",
+    "09 - Password Attacks/2 - Remote Password Attacks.md",
     "15 - Login Brute Forcing",
     "README.md",
     "14 - Attacking Web Applications with Ffuf/03 - Parameter Fuzzing.md",
@@ -257,11 +276,7 @@
     "09 - Password Attacks/6 - Windows Lateral Movement Techniques.md",
     "12 - Active Directory Enumeration & Attacks/01 - Setting the Stage.md",
     "12 - Active Directory Enumeration & Attacks/12 - Defensive Considerations.md",
-    "12 - Active Directory Enumeration & Attacks/10 - Why So Trusting.md",
     "12 - Active Directory Enumeration & Attacks/images/SID History Cross Forest.png",
-    "10 - Attacking Common Services/8 - SMTP.md",
-    "03 - Footprinting/10 - IMAP - POP3.md",
-    "03 - Footprinting/Cheatsheet.md",
     "12 - Active Directory Enumeration & Attacks/images/PetitPotam exploit.png",
     "12 - Active Directory Enumeration & Attacks/images/Reversible Encryption.png",
     "12 - Active Directory Enumeration & Attacks/images/ACE Attacks.png",
