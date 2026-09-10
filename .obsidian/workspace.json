@@ -11,10 +11,14 @@
             "id": "9fdece60bbcb4fb5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "18 - Cross-Site Scripting (XSS)/01 - XSS Basics.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "01 - XSS Basics"
             }
           }
         ]
@@ -228,6 +232,8 @@
   },
   "active": "9fdece60bbcb4fb5",
   "lastOpenFiles": [
+    "18 - Cross-Site Scripting (XSS)/01 - XSS Basics.md",
+    "18 - Cross-Site Scripting (XSS)",
     "README.md",
     "17 - SQLMap Essentials/04 - Advanced SQLMap Usage.md",
     "17 - SQLMap Essentials/03 - Database Enumeration.md",
@@ -258,7 +264,6 @@
     "12 - Active Directory Enumeration & Attacks/07 - Cooking with Fire.md",
     "12 - Active Directory Enumeration & Attacks/06 - Deeper Down the Rabbit Hole.md",
     "12 - Active Directory Enumeration & Attacks/05 - Spray Responsibly.md",
-    "12 - Active Directory Enumeration & Attacks/04 - Sighting In, Hunting for a User.md",
     "12 - Active Directory Enumeration & Attacks/images/SID History Cross Forest.png",
     "12 - Active Directory Enumeration & Attacks/images/PetitPotam exploit.png",
     "12 - Active Directory Enumeration & Attacks/images/Reversible Encryption.png",
@@ -272,7 +277,6 @@
     "Parallel Project/Pasted image 20260518195213.png",
     "Parallel Project/Pasted image 20260518194404.png",
     "Parallel Project",
-    "New folder",
-    "12 - Active Directory Enumeration & Attacks"
+    "New folder"
   ]
 }
