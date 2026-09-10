@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "54581194653d6fc8",
+        "id": "c1cc91a2b477a625",
         "type": "tabs",
         "children": [
           {
-            "id": "97cb57f438d9c641",
+            "id": "9fdece60bbcb4fb5",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "17 - SQLMap Essentials/03 - Database Enumeration.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "03 - Database Enumeration"
+              "title": "New tab"
             }
           }
         ]
@@ -230,14 +226,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "97cb57f438d9c641",
+  "active": "9fdece60bbcb4fb5",
   "lastOpenFiles": [
-    "17 - SQLMap Essentials/02 - Building Attacks.md",
+    "README.md",
+    "17 - SQLMap Essentials/04 - Advanced SQLMap Usage.md",
     "17 - SQLMap Essentials/03 - Database Enumeration.md",
     "16 - SQL Injection Fundamentals/02 - Exploitation.md",
-    "16 - SQL Injection Fundamentals/01 - SQL Injections.md",
+    "17 - SQLMap Essentials/02 - Building Attacks.md",
     "17 - SQLMap Essentials/01 - Getting Started.md",
-    "README.md",
+    "16 - SQL Injection Fundamentals/01 - SQL Injections.md",
     "17 - SQLMap Essentials",
     "16 - SQL Injection Fundamentals",
     "15 - Login Brute Forcing/01 - Hydra.md",
@@ -262,7 +259,6 @@
     "12 - Active Directory Enumeration & Attacks/06 - Deeper Down the Rabbit Hole.md",
     "12 - Active Directory Enumeration & Attacks/05 - Spray Responsibly.md",
     "12 - Active Directory Enumeration & Attacks/04 - Sighting In, Hunting for a User.md",
-    "10 - Attacking Common Services/4 - SMB.md",
     "12 - Active Directory Enumeration & Attacks/images/SID History Cross Forest.png",
     "12 - Active Directory Enumeration & Attacks/images/PetitPotam exploit.png",
     "12 - Active Directory Enumeration & Attacks/images/Reversible Encryption.png",
