@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "b83f617724279311",
+        "id": "dd30e33b4f027865",
         "type": "tabs",
         "children": [
           {
-            "id": "edda4fdf91e59abb",
+            "id": "83cf1cb3a93ee1c2",
             "type": "leaf",
             "state": {
               "type": "markdown",
@@ -175,8 +175,8 @@
             "state": {
               "type": "advanced-tables-toolbar",
               "state": {},
-              "icon": "spreadsheet",
-              "title": "Advanced Tables"
+              "icon": "lucide-ghost",
+              "title": "advanced-tables-toolbar"
             }
           },
           {
@@ -215,9 +215,6 @@
   },
   "left-ribbon": {
     "hiddenItems": {
-      "iconic:Open rulebook": false,
-      "templater-obsidian:Templater": false,
-      "omnisearch:Omnisearch": false,
       "bases:Create new base": false,
       "switcher:Open quick switcher": false,
       "canvas:Create new canvas": false,
@@ -227,22 +224,27 @@
       "graph:Open graph view": false,
       "table-editor-obsidian:Advanced Tables Toolbar": false,
       "obsidian-kanban:Create new board": false,
+      "omnisearch:Omnisearch": false,
+      "iconic:Open rulebook": false,
+      "templater-obsidian:Templater": false,
       "obsidian-git:Open Git source control": false
     }
   },
   "active": "4562b081c7321d04",
   "lastOpenFiles": [
+    "Pasted image 20260920204412.png",
+    "19 - File Inclusion/Images/Approved Paths.png",
+    "19 - File Inclusion/02 - File Disclosures.md",
+    "18 - Cross-Site Scripting (XSS)/01 - XSS Basics.md",
+    "19 - File Inclusion/01 - Introduction.md",
+    "18 - Cross-Site Scripting (XSS)/02 - XSS Attacks.md",
     "19 - File Inclusion/Images/Filename Prefix Bypass.png",
     "19 - File Inclusion/Images/Filename Prefix Error.png",
     "19 - File Inclusion/Images/Path Traversal.png",
     "19 - File Inclusion/Images",
     "Pasted image 20260916140729.png",
     "19 - File Inclusion/Images/File Inclusion.png",
-    "19 - File Inclusion/02 - File Disclosures.md",
-    "19 - File Inclusion/01 - Introduction.md",
     "19 - File Inclusion",
-    "18 - Cross-Site Scripting (XSS)/02 - XSS Attacks.md",
-    "18 - Cross-Site Scripting (XSS)/01 - XSS Basics.md",
     "18 - Cross-Site Scripting (XSS)",
     "README.md",
     "17 - SQLMap Essentials/04 - Advanced SQLMap Usage.md",
@@ -273,9 +275,6 @@
     "12 - Active Directory Enumeration & Attacks/images/SID History Cross Forest.png",
     "12 - Active Directory Enumeration & Attacks/images/PetitPotam exploit.png",
     "12 - Active Directory Enumeration & Attacks/images/Reversible Encryption.png",
-    "12 - Active Directory Enumeration & Attacks/images/ACE Attacks.png",
-    "12 - Active Directory Enumeration & Attacks/images/UAC Values.png",
-    "12 - Active Directory Enumeration & Attacks/images/querydominfo - password policy.png",
     "12 - Active Directory Enumeration & Attacks/images",
     "Parallel Project.rar"
   ]

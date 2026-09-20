@@ -1,4 +1,4 @@
-# # Local File Inclusion (LFI)
+# Local File Inclusion (LFI)
 ## Basic LFI
 
 ![[File Inclusion.png]]
@@ -46,4 +46,52 @@ include($_GET['language'] . ".php");
 ```
 
 ## Second-Order Attacks
+
+```ad-example
+Like when you use an LFI paylaod in your username and it gets interpreted as a real file path and you get the content of the file when you view your username.
+```
+
+
+---
+
+# Basic Bypasses
+
+## Non-Recursive Path Traversal Filters
+
+One of the most basic filters against LFI is a search and replace filter, where it simply deletes substrings of `../` to avoid path traversals:
+
+```php
+$language = str_replace('../', '', $_GET['language']);
+```
+
+This can be easily bypassed with payloads from the type:
+
+```php
+....//
+# OR
+..\/
+```
+
+## Encoding
+
+Some filters removes out potential LFI characters such as: `.` or `/`
+So you'll need to try different types of encoding like URL Encoding or Double URL Encoding.
+
+## Approved Paths
+
+Some web applications may also use Regular Expressions to ensure that the file being included is under a specific path.
+
+**Example:** This application only accepts paths that are under the `./languages` directory, as follows:
+
+```php
+if(preg_match('/^\.\/languages\/.+$/', $_GET['language'])) {
+    include($_GET['language']);
+} else {
+    echo 'Illegal path specified!';
+}
+```
+
+![[Approved Paths.png]]
+
+## Appended Extension
 
