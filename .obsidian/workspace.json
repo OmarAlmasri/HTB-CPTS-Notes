@@ -13,12 +13,12 @@
             "state": {
               "type": "markdown",
               "state": {
-                "file": "19 - File Inclusion/02 - File Disclosures.md",
+                "file": "19 - File Inclusion/03 - Remote Code Executions.md",
                 "mode": "source",
                 "source": false
               },
               "icon": "lucide-file",
-              "title": "02 - File Disclosures"
+              "title": "03 - Remote Code Executions"
             }
           }
         ]
@@ -230,9 +230,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d92cdf74ffd234ee",
+  "active": "83cf1cb3a93ee1c2",
   "lastOpenFiles": [
     "19 - File Inclusion/02 - File Disclosures.md",
+    "19 - File Inclusion/03 - Remote Code Executions.md",
     "Walkthrough.md",
     "Pasted image 20260920204412.png",
     "19 - File Inclusion/Images/Approved Paths.png",
@@ -272,7 +273,6 @@
     "12 - Active Directory Enumeration & Attacks/03- Sniffing Out a Foothold.md",
     "12 - Active Directory Enumeration & Attacks/02 - Initial Enumeration.md",
     "12 - Active Directory Enumeration & Attacks/08 - An ACE in the Hole.md",
-    "10 - Attacking Common Services/1 - Introduction.md",
     "12 - Active Directory Enumeration & Attacks/images/SID History Cross Forest.png",
     "12 - Active Directory Enumeration & Attacks/images/PetitPotam exploit.png",
     "12 - Active Directory Enumeration & Attacks/images/Reversible Encryption.png",
