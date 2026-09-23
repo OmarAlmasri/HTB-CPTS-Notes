@@ -112,7 +112,7 @@
             "state": {
               "type": "backlink",
               "state": {
-                "file": "9 - Password Attacks/6 - Windows Lateral Movement Techniques.md",
+                "file": "19 - File Inclusion/03 - Remote Code Executions.md",
                 "collapseAll": true,
                 "extraContext": false,
                 "sortOrder": "alphabetical",
@@ -122,7 +122,7 @@
                 "unlinkedCollapsed": true
               },
               "icon": "links-coming-in",
-              "title": "Backlinks for 6 - Windows Lateral Movement Techniques"
+              "title": "Backlinks"
             }
           },
           {
@@ -175,8 +175,8 @@
             "state": {
               "type": "advanced-tables-toolbar",
               "state": {},
-              "icon": "lucide-ghost",
-              "title": "advanced-tables-toolbar"
+              "icon": "spreadsheet",
+              "title": "Advanced Tables"
             }
           },
           {
@@ -230,15 +230,16 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "83cf1cb3a93ee1c2",
+  "active": "4562b081c7321d04",
   "lastOpenFiles": [
+    "19 - File Inclusion/Images/Apache Access Log Inclusion.png",
     "19 - File Inclusion/02 - File Disclosures.md",
+    "19 - File Inclusion/01 - Introduction.md",
     "19 - File Inclusion/03 - Remote Code Executions.md",
     "Walkthrough.md",
     "Pasted image 20260920204412.png",
     "19 - File Inclusion/Images/Approved Paths.png",
     "18 - Cross-Site Scripting (XSS)/01 - XSS Basics.md",
-    "19 - File Inclusion/01 - Introduction.md",
     "18 - Cross-Site Scripting (XSS)/02 - XSS Attacks.md",
     "19 - File Inclusion/Images/Filename Prefix Bypass.png",
     "19 - File Inclusion/Images/Filename Prefix Error.png",
@@ -272,7 +273,6 @@
     "10 - Attacking Common Services/5 - SQL Databases.md",
     "12 - Active Directory Enumeration & Attacks/03- Sniffing Out a Foothold.md",
     "12 - Active Directory Enumeration & Attacks/02 - Initial Enumeration.md",
-    "12 - Active Directory Enumeration & Attacks/08 - An ACE in the Hole.md",
     "12 - Active Directory Enumeration & Attacks/images/SID History Cross Forest.png",
     "12 - Active Directory Enumeration & Attacks/images/PetitPotam exploit.png",
     "12 - Active Directory Enumeration & Attacks/images/Reversible Encryption.png",

