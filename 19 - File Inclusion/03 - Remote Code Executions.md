@@ -278,3 +278,36 @@ There are other similar log poisoning techniques that we may utilize on various 
 - `/var/log/mail`
 - `/var/log/vsftpd.log`
 
+# Automated Scanning
+
+## Fuzzing Parameters
+
+Use wordlists such as: [HackTricks Top 25 Parameters](https://book.hacktricks.wiki/en/pentesting-web/file-inclusion/index.html#top-25-parameters)
+
+## LFI wordlists
+
+A good wordlist to use is [SecLists/LFI-Jhaddix.txt](https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/LFI/LFI-Jhaddix.txt)
+As it contains various bypasses and common files.
+
+## Fuzzing Server Files
+#### Server Webroot
+
+We may need to know the full server webroot path to complete our exploitation in some cases.
+
+To do so, we can fuzz for the `index.php` file through common webroot paths, which we can find in this [wordlist for Linux](https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/default-web-root-directory-linux.txt) or this [wordlist for Windows](https://github.com/danielmiessler/SecLists/blob/master/Discovery/Web-Content/default-web-root-directory-windows.txt).
+
+**Example Usage:**
+
+```sh
+ffuf -w /opt/useful/seclists/Discovery/Web-Content/default-web-root-directory-linux.txt:FUZZ -u 'http://<SERVER_IP>:<PORT>/index.php?language=../../../../FUZZ/index.php' -fs 2287
+```
+
+We may also use the same [SecLists/LFI-Jhaddix.txt](https://github.com/danielmiessler/SecLists/blob/master/Fuzzing/LFI/LFI-Jhaddix.txt) from earlier.
+#### Server Logs/Configurations
+
+We need to identify the correct logs directory to be able to perform the log poisoning attacks.
+
+## LFI Tools
+
+The most common LFI tools are [LFISuite](https://github.com/D35m0nd142/LFISuite), [LFiFreak](https://github.com/OsandaMalith/LFiFreak), and [liffy](https://github.com/mzfr/liffy).
+
