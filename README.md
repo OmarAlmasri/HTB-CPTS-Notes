@@ -72,9 +72,9 @@ Modules are organized by phase/domain as covered in the path. Progress will be t
 | 16  | Login Brute Forcing                    | ✅      |
 | 17  | SQL Injection Fundamentals             | ✅      |
 | 18  | SQLMap Essentials                      | ✅      |
-| 19  | Cross-Site Scripting (XSS)             | 🔄     |
-| 20  | File Inclusion                         | ⬜      |
-| 21  | File Upload Attacks                    | ⬜      |
+| 19  | Cross-Site Scripting (XSS)             | ✅      |
+| 20  | File Inclusion                         | ✅      |
+| 21  | File Upload Attacks                    | 🔄     |
 | 22  | Command Injections                     | ⬜      |
 | 23  | Web Attacks                            | ⬜      |
 | 24  | Attacking Common Applications          | ⬜      |
