@@ -11,10 +11,14 @@
             "id": "7fcdfd070e40b3d8",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "20 - File Upload Attacks/02 - Bypassing Filters.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "02 - Bypassing Filters"
             }
           }
         ]
@@ -226,10 +230,10 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "7fcdfd070e40b3d8",
+  "active": "d92cdf74ffd234ee",
   "lastOpenFiles": [
-    "README.md",
     "20 - File Upload Attacks/02 - Bypassing Filters.md",
+    "README.md",
     "20 - File Upload Attacks/images",
     "20 - File Upload Attacks/images/Disable Front-end validation via Page Inspector.png",
     "20 - File Upload Attacks/01 - Basic Exploitation.md",
