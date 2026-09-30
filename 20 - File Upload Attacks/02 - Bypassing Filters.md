@@ -143,3 +143,39 @@ A file upload HTTP request has two Content-Type headers, one for the attached fi
 
 ## MIME-Type
 
+**MIME-Type** is an internet standard that determines the type of a file through its general format and bytes structure.
+
+This is usually done by inspecting the first few bytes of file's content, which contain the [File Signature](https://en.wikipedia.org/wiki/List_of_file_signatures) or [Magic Bytes](https://web.archive.org/web/20240522030920/https://opensource.apple.com/source/file/file-23/file/magic/magic.mime). *(E.g. if a file starts with GIF87a or GIF89a this indicates it's a GIF image)*.
+#### Find the file type on Linux through MIME type
+
+```sh
+echo "This is a text file" > text.jpg
+file text.jpg
+
+text.jpg: ASCII text
+```
+
+```sh
+echo "GIF8" > text.jpg
+file text.jpg
+
+text.jpg: GIF image data
+```
+
+Web servers also use this standard to determine file types, which is more accurate than testing the file extension.
+
+**Example Code:**
+
+```php
+$type = mime_content_type($_FILES['uploadFile']['tmp_name']); 
+
+if (!in_array($type, array('image/jpg', 'image/jpeg', 'image/png', 'image/gif'))) 
+	{ 
+		echo "Only images are allowed"; die(); 
+	}
+```
+
+```ad-tip
+We can use a combination of the two methods discussed in this section, which may help us bypass some more robust content filters. For example, we can try using an `Allowed MIME type with a disallowed Content-Type`, an `Allowed MIME/Content-Type with a disallowed extension`, or a `Disallowed MIME/Content-Type with an allowed extension` and so on similarly.
+```
+
