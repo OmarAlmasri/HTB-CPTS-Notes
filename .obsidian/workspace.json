@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "cdee97458e887755",
+        "id": "d3c835734e1bdb33",
         "type": "tabs",
         "children": [
           {
-            "id": "7fcdfd070e40b3d8",
+            "id": "57578bbc440dd8ac",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "20 - File Upload Attacks/02 - Bypassing Filters.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "02 - Bypassing Filters"
+              "title": "New tab"
             }
           }
         ]
@@ -230,15 +226,17 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "d92cdf74ffd234ee",
+  "active": "57578bbc440dd8ac",
   "lastOpenFiles": [
+    "19 - File Inclusion/02 - File Disclosures.md",
+    "14 - Attacking Web Applications with Ffuf/01 - Basic Fuzzing.md",
+    "20 - File Upload Attacks/03 - Other Upload Attacks.md",
     "20 - File Upload Attacks/02 - Bypassing Filters.md",
     "README.md",
     "20 - File Upload Attacks/images",
     "20 - File Upload Attacks/images/Disable Front-end validation via Page Inspector.png",
     "20 - File Upload Attacks/01 - Basic Exploitation.md",
     "19 - File Inclusion/03 - Remote Code Executions.md",
-    "19 - File Inclusion/02 - File Disclosures.md",
     "20 - File Upload Attacks",
     "19 - File Inclusion/01 - Introduction.md",
     "19 - File Inclusion/Images/Apache Access Log Inclusion.png",
@@ -271,7 +269,6 @@
     "15 - Login Brute Forcing",
     "14 - Attacking Web Applications with Ffuf/03 - Parameter Fuzzing.md",
     "14 - Attacking Web Applications with Ffuf/02 - Domain Fuzzing.md",
-    "14 - Attacking Web Applications with Ffuf/01 - Basic Fuzzing.md",
     "14 - Attacking Web Applications with Ffuf",
     "12 - Active Directory Enumeration & Attacks/13 - Skill Assessment Notes.md",
     "13 - Using Web Proxies",
