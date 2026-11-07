@@ -104,3 +104,41 @@ echo $(tr '!-}' '"-~'<<<[)
 \
 ```
 
+# Bypassing Blacklisted Commands
+
+## Linux & Windows
+
+One very common and easy obfuscation technique is inserting certain characters withing the command that are usually ignored by shells like Bash and PowerShell. E.g. single-quote `'` and double-quote `"`, in addition to few others.
+
+**Example:**
+
+```sh
+w'h'o'am'i
+```
+
+## Linux Only
+
+We can insert few characters in the middle of commands and bash would ignore them and execute the command. These characters include:
+
+- Backslash `\`
+- Positional Parameter Character `$@`
+
+The number of characters do not have to be even.
+
+```sh
+who$@ami
+w\ho\am\i
+```
+
+```ad-warning
+If the above examples didn't work, this may indicate that we used a filtered character in our payload.
+```
+
+## Windows Only
+
+There are also some Windows-only characters that we can insert in the middle of commands, like caret (`^`) character.
+
+```powershell
+who^ami
+```
+
