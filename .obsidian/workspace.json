@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "e63f83dbc6c5da95",
+        "id": "80199ddd82b3436b",
         "type": "tabs",
         "children": [
           {
-            "id": "abd978db65a6d348",
+            "id": "bd7f1bb2b348a23c",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -226,17 +226,19 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "abd978db65a6d348",
+  "active": "bd7f1bb2b348a23c",
   "lastOpenFiles": [
-    "21 - Command Injections/01 - Exploitation.md",
+    "README.md",
     "21 - Command Injections/02 - Filter Evasion.md",
+    "21 - Command Injections/01 - Exploitation.md",
+    "21 - Command Injections/images",
+    "21 - Command Injections/images/cmdinj_filters_commands_6.jpg",
     "04 - Information Gathering - Web/6 - Automating Recon.md",
     "04 - Information Gathering - Web/5 - Search Engine Discovery.md",
     "04 - Information Gathering - Web/4 - Crawling.md",
     "04 - Information Gathering - Web/3 - Fingerprinting.md",
     "04 - Information Gathering - Web/2 - DNS & Subdomains.md",
     "04 - Information Gathering - Web/1 - WHOIS.md",
-    "README.md",
     "21 - Command Injections",
     "20 - File Upload Attacks/03 - Other Upload Attacks.md",
     "10 - Attacking Common Services/5 - SQL Databases.md",
@@ -270,9 +272,6 @@
     "16 - SQL Injection Fundamentals/01 - SQL Injections.md",
     "17 - SQLMap Essentials",
     "16 - SQL Injection Fundamentals",
-    "15 - Login Brute Forcing/01 - Hydra.md",
-    "15 - Login Brute Forcing",
-    "14 - Attacking Web Applications with Ffuf",
-    "12 - Active Directory Enumeration & Attacks/images/SID History Cross Forest.png"
+    "15 - Login Brute Forcing"
   ]
 }
