@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "e6dab88b500686a8",
+        "id": "703d9c3317f14c93",
         "type": "tabs",
         "children": [
           {
-            "id": "6cfa23ee2bff6584",
+            "id": "5fb02967bcd055c5",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -226,7 +226,7 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "6cfa23ee2bff6584",
+  "active": "5fb02967bcd055c5",
   "lastOpenFiles": [
     "22 - Web Attacks/02 - HTTP Verb Tampering.md",
     "22 - Web Attacks/01 - Introduction.md",
