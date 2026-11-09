@@ -4,11 +4,11 @@
     "type": "split",
     "children": [
       {
-        "id": "80199ddd82b3436b",
+        "id": "e6dab88b500686a8",
         "type": "tabs",
         "children": [
           {
-            "id": "bd7f1bb2b348a23c",
+            "id": "6cfa23ee2bff6584",
             "type": "leaf",
             "state": {
               "type": "empty",
@@ -226,8 +226,11 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "bd7f1bb2b348a23c",
+  "active": "6cfa23ee2bff6584",
   "lastOpenFiles": [
+    "22 - Web Attacks/02 - HTTP Verb Tampering.md",
+    "22 - Web Attacks/01 - Introduction.md",
+    "22 - Web Attacks",
     "README.md",
     "21 - Command Injections/02 - Filter Evasion.md",
     "21 - Command Injections/01 - Exploitation.md",
@@ -269,9 +272,7 @@
     "16 - SQL Injection Fundamentals/02 - Exploitation.md",
     "17 - SQLMap Essentials/02 - Building Attacks.md",
     "17 - SQLMap Essentials/01 - Getting Started.md",
-    "16 - SQL Injection Fundamentals/01 - SQL Injections.md",
     "17 - SQLMap Essentials",
-    "16 - SQL Injection Fundamentals",
-    "15 - Login Brute Forcing"
+    "16 - SQL Injection Fundamentals"
   ]
 }
