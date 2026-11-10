@@ -11,10 +11,14 @@
             "id": "5fb02967bcd055c5",
             "type": "leaf",
             "state": {
-              "type": "empty",
-              "state": {},
+              "type": "markdown",
+              "state": {
+                "file": "22 - Web Attacks/02 - HTTP Verb Tampering.md",
+                "mode": "source",
+                "source": false
+              },
               "icon": "lucide-file",
-              "title": "New tab"
+              "title": "02 - HTTP Verb Tampering"
             }
           }
         ]
@@ -92,7 +96,8 @@
       }
     ],
     "direction": "horizontal",
-    "width": 301.5
+    "width": 301.5,
+    "collapsed": true
   },
   "right": {
     "id": "39f9239001c8b1c0",
@@ -228,6 +233,11 @@
   },
   "active": "5fb02967bcd055c5",
   "lastOpenFiles": [
+    "22 - Web Attacks/images/FileManager Exploitation - 2.png",
+    "22 - Web Attacks/images/FileManager Exploitation - 1.png",
+    "22 - Web Attacks/images/FileManager Auth Prompt.png",
+    "22 - Web Attacks/images",
+    "22 - Web Attacks/images/FileManager.png",
     "22 - Web Attacks/02 - HTTP Verb Tampering.md",
     "22 - Web Attacks/01 - Introduction.md",
     "22 - Web Attacks",
@@ -261,18 +271,13 @@
     "18 - Cross-Site Scripting (XSS)/02 - XSS Attacks.md",
     "19 - File Inclusion/Images/Filename Prefix Bypass.png",
     "19 - File Inclusion/Images/Filename Prefix Error.png",
-    "19 - File Inclusion/Images/Path Traversal.png",
     "19 - File Inclusion/Images",
-    "Pasted image 20260916140729.png",
-    "19 - File Inclusion/Images/File Inclusion.png",
     "19 - File Inclusion",
     "18 - Cross-Site Scripting (XSS)",
     "17 - SQLMap Essentials/04 - Advanced SQLMap Usage.md",
     "17 - SQLMap Essentials/03 - Database Enumeration.md",
     "16 - SQL Injection Fundamentals/02 - Exploitation.md",
     "17 - SQLMap Essentials/02 - Building Attacks.md",
-    "17 - SQLMap Essentials/01 - Getting Started.md",
-    "17 - SQLMap Essentials",
-    "16 - SQL Injection Fundamentals"
+    "17 - SQLMap Essentials"
   ]
 }
