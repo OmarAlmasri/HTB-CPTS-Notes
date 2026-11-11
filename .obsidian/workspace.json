@@ -4,21 +4,17 @@
     "type": "split",
     "children": [
       {
-        "id": "703d9c3317f14c93",
+        "id": "76c3a10a87d64557",
         "type": "tabs",
         "children": [
           {
-            "id": "5fb02967bcd055c5",
+            "id": "66d45084a23df849",
             "type": "leaf",
             "state": {
-              "type": "markdown",
-              "state": {
-                "file": "22 - Web Attacks/02 - HTTP Verb Tampering.md",
-                "mode": "source",
-                "source": false
-              },
+              "type": "empty",
+              "state": {},
               "icon": "lucide-file",
-              "title": "02 - HTTP Verb Tampering"
+              "title": "New tab"
             }
           }
         ]
@@ -231,14 +227,15 @@
       "obsidian-git:Open Git source control": false
     }
   },
-  "active": "5fb02967bcd055c5",
+  "active": "66d45084a23df849",
   "lastOpenFiles": [
+    "22 - Web Attacks/03 - IDOR.md",
+    "22 - Web Attacks/02 - HTTP Verb Tampering.md",
     "22 - Web Attacks/images/FileManager Exploitation - 2.png",
     "22 - Web Attacks/images/FileManager Exploitation - 1.png",
     "22 - Web Attacks/images/FileManager Auth Prompt.png",
     "22 - Web Attacks/images",
     "22 - Web Attacks/images/FileManager.png",
-    "22 - Web Attacks/02 - HTTP Verb Tampering.md",
     "22 - Web Attacks/01 - Introduction.md",
     "22 - Web Attacks",
     "README.md",
@@ -270,7 +267,6 @@
     "18 - Cross-Site Scripting (XSS)/01 - XSS Basics.md",
     "18 - Cross-Site Scripting (XSS)/02 - XSS Attacks.md",
     "19 - File Inclusion/Images/Filename Prefix Bypass.png",
-    "19 - File Inclusion/Images/Filename Prefix Error.png",
     "19 - File Inclusion/Images",
     "19 - File Inclusion",
     "18 - Cross-Site Scripting (XSS)",

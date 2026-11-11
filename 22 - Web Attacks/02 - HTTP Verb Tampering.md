@@ -136,3 +136,5 @@ Finally, the following is an example for an `ASP.NET` configuration
 We can see that the authorization is being limited only to the `GET` method.
 ## Insecure Coding
 
+To avoid HTTP Verb Tampering vulnerabilities in our code, `we must be consistent with our use of HTTP methods` and ensure that the same method is always used for any specific functionality across the web application.
+
