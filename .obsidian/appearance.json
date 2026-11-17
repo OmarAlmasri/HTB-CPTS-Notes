@@ -2,5 +2,6 @@
   "accentColor": "",
   "theme": "system",
   "cssTheme": "Things",
-  "enabledCssSnippets": []
+  "enabledCssSnippets": [],
+  "showRibbon": true
 }
