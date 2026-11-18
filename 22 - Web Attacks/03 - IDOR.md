@@ -101,3 +101,31 @@ IDORs are not limited to reading other users' resources and files, it can be use
 
 ## Identifying Insecure APIs
 
+We might stumble upon an API that will look like the following:
+
+![[Insecure API.png]]
+
+We see that the `PUT` request includes a few hidden parameters like, `uid`, `uuid`, and `role`.
+
+Unless the web application has solid access control system on the back-end, we would be able to set an arbitrary role for our user, which may grant us more privileges.
+## Exploiting Insecure APIs
+
+Based on the past request, there are multiple test cases we can try:
+1. Try to change our `uid` to another user's `uid`, such that we can take over their accounts.
+2. Change another user's details, which may allow us to perform several web attacks.
+3. Create new users with arbitrary details, or delete existing users.
+4. Change our role to a more privileged role (e.g. `admin`) to be able to perform more actions.
+
+# Chaining IDOR Vulnerabilities
+
+## Information Disclosure
+
+Sending a `GET` request with another `uid`.
+
+## Modifying Other Users' Details
+
+Past in the provided example, if we tried to edit another user's details, we would've needed to provide correct `uid` and `uuid`. So, we take the correct values from the **Information Disclosure IDOR** we found and modify the target's details.
+
+## Chaining Two IDOR Vulnerabilities
+
+We can chain the **Information Disclosure IDOR** vulnerability we found with the **Modifying Other User's Details IDOR** to hunt for an administrator account and takeover it.
